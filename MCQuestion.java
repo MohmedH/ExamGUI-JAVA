@@ -1,17 +1,46 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MCQuestion extends Question{
-    private ArrayList answers;
+    protected ArrayList<MCAnswer> answers;
+
+    public MCQuestion(String s, double maxVal) {
+        super(s, maxVal);
+        answers = new ArrayList<MCAnswer>();
+    }
+
 
     public void print() {
-
+        char[] answerAlphabet = {'A', 'B', 'C', 'D', 'E'};
+        // get the answer and print out.
+        System.out.println(this.getTheQuestion());
+        int numOfAnswers = answers.size();
+        for (int i=0; i < numOfAnswers; i++) {
+            System.out.print(" " + answerAlphabet[i] + ". ");
+            answers.get(i).print();
+        }
     }
 
-    public Answer addAnswer(Answer ans) {
 
+    public ArrayList<MCAnswer> getAnswers() {
+        return answers;
     }
+
+
+    public void addAnswer(MCAnswer ans) {
+        // If there are less than 5 answers then add a answer.
+        if (answers.size() < 5) {
+            answers.add(ans);
+        }
+        // Otherwise, print out the error message.
+        else {
+            System.out.println("The limit for number of answers are 5.");
+        }
+    }
+
 
     public void reorderAnswers() {
+        Collections.shuffle(answers);
 
     }
 

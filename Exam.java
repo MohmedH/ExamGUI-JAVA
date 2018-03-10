@@ -6,6 +6,7 @@
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Exam {
     private String text; // name of the exam.
@@ -20,21 +21,30 @@ public class Exam {
         N = 5; // As the HW description mentioned the default value of N is 5
     }
 
+    public Exam(Scanner scanner) {
+
+
+    }
+
+
+
 
     /** It prints out the whole exam including questions and answers.*/
     public void print() {
-        System.out.println("Exam Name: " + text);
+        System.out.println("\n\nExam Name: " + text);
+        System.out.println("-------------------------------------------------------------");
+
         int j = 0;
         // Iterate the Questions ArrayList and then print out each question and answers.
         for (Question q : questions) {
             System.out.println("");
-            System.out.println("Q." + j + ": " + q.getName());
+            System.out.print("Q." + (j+1) + ": ");
+            q.print();
             // Iterates the answers and print out.
-            for (int i=0; i < N; i++) {
-                q.print(i);
-            }
             j++;
         }
+        System.out.println("\n\nEnd of Exam. Congratulation!!");
+        System.out.println("-------------------------------------------------------------\n\n");
     }
 
 
@@ -49,30 +59,70 @@ public class Exam {
         Collections.shuffle(questions);
     }
 
-    // TODO: 2/18/18  
+
+    /** It reorders the MCAAanswers */
     public void reorderMCAAnswers(int pos) {
+        // if pos is negative shuffle all the answers of the MCQuestions.
+        // if pos has value only the question in the position answers get shuffled.
+        if (pos > questions.size()) {
+            System.out.println("There is no such question number in this exam. Look at the exam again!");
+            return;
+        }
 
+        if (pos < 0 ) {
+            for(Question q : questions) {
+                if(q instanceof MCQuestion) {
+                    // type casting stuff here.
+                    ((MCQuestion) q).reorderAnswers();
+                }
+            }
+            return;
+        }
+
+        if (!(questions.get(pos) instanceof MCQuestion)) {
+            System.out.println("This question's answers can't be shuffled.");
+        }
     }
 
-    // TODO: 2/18/18  
+
+    /** creates a new Answer. Gets the answer from the std in and the answer is
+     * stored in the studentAnswer field of the Question class.
+     * */
     public void getAnswerFromStudent(int pos) {
-
+        if(pos > questions.size()) {
+            System.out.println("The questions number " + pos + "does not exists on this exam.");
+            return;
+        }
+        if(pos < 1) {
+            System.out.println("The question number is not right. It should be larger than 0");
+            return;
+        }
+        System.out.print("Q" + pos +". Please type answer");
+        questions.get(pos-1).getAnswerFromStudent();
     }
+
 
     /** Returns the total score of the exam.*/
     public double getValue() {
         double total_score = 0.0; // Initialize the total score as 0
         // Iterate the question instances and add all the scores.
+        int i = 0;
         for (Question q : questions) {
             total_score += q.getValue();
+            i++;
         }
         return total_score;
     }
 
+
+    /** Takes an integer and returns the question from the array list. */
     public Question getQuestion(int i) {
         return questions.get(i); // returns the ith question instance.
     }
 
 
-
+    /** returns the number of the questions */
+    public int getNumberOfQuestions() {
+        return questions.size();
+    }
 }
