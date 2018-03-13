@@ -22,10 +22,19 @@ public class Exam {
     }
 
     public Exam(Scanner scanner) {
-
-
+        System.out.println("exam constructor");
+        text = scanner.nextLine();
+        questions = new ArrayList<Question>();
+        System.out.println("======");
+        while(scanner.hasNext()) {
+            Question q = Question(scanner);
+        }
     }
 
+
+    public boolean isTokQuestion(String tok) {
+        return (tok.equals("SAQuestion") || tok.equals("NumQuestion") || tok.equals("MCSAQuestion") || tok.equals("MCMAQuestion"));
+    }
 
 
 

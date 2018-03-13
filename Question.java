@@ -20,6 +20,8 @@ public class Question {
         maxValue = val;
     }
 
+
+
     public void print() {
         System.out.println(text);
 
