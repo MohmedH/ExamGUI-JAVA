@@ -59,11 +59,14 @@ public class Exam {
     }
 
     public void save(PrintWriter writer) {
-        writer.write(text);
-        writer.flush();
+        writer.write(text + "\n\n");
+        int i = 0;
         for (Question q : questions) {
+            writer.write("Q." + (i+1) + ": ");
             q.save(writer);
+            i++;
         }
+        writer.flush();
     }
 
     /** It prints out the whole exam including questions and answers.*/

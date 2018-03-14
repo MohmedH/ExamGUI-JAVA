@@ -20,14 +20,13 @@ public class MCMAQuestion extends MCQuestion{
     }
 
     public void save(PrintWriter writer) {
-        writer.write(text);
+        writer.write(text + "\n");
         char[] answerAlphabet = {'A', 'B', 'C', 'D', 'E'};
         // get the answer and print out.
-        System.out.println(this.getTheQuestion());
         int numOfAnswers = answers.size();
         for (int i=0; i < numOfAnswers; i++) {
-            System.out.print(" " + answerAlphabet[i] + ". ");
-            answers.get(i).print();
+            writer.write(" " + answerAlphabet[i] + ". ");
+            writer.write(" " + answers.get(i).text + "\n");
         }
     }
 

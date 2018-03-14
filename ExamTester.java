@@ -64,6 +64,11 @@ public class ExamTester {
             e.printStackTrace();
         }
 
+
+
+        exam1.reorderQuestions();
+        exam1.reorderMCAAnswers(-1);
+        exam1.print();
         exam1.save(writer);
 
 
