@@ -27,8 +27,32 @@ public class Exam {
         questions = new ArrayList<Question>();
         System.out.println("======");
         while(scanner.hasNext()) {
-            Question q = Question(scanner);
+            Question q = _createQuestion(scanner);
         }
+    }
+
+    /*
+    MCSAQuestion
+    MCMAQuestion
+    NumQuestion
+    SAQuestion
+     */
+
+    public Question _createQuestion(Scanner scanner) {
+        String tok = scanner.next();
+        switch (tok) {
+            case("SAQuestion"):
+                return new SAQuestion(scanner);
+                break;
+            case("NumQuestion"):
+                break;
+            case("MCMAQuestion"):
+                break;
+            case("MCSAQuestion"):
+                break;
+
+        }
+
     }
 
 

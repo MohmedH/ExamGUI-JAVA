@@ -4,12 +4,18 @@
  netID : slim67
  */
 
+import java.util.Scanner;
+
 public class SAAnswer extends Answer {
 
     private String text;
 
     public SAAnswer(String s) {
         text = s;
+    }
+
+    public SAAnswer(Scanner scanner) {
+        text = scanner.next();
     }
     
     public void print() {

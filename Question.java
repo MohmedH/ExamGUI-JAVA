@@ -6,6 +6,7 @@
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Question {
     protected String text; // Question name.
@@ -20,6 +21,17 @@ public class Question {
         maxValue = val;
     }
 
+    public Question() {
+        text = null;
+        rightAnswer = null;
+        studentAnswer = null;
+        maxValue = 0.0;
+    }
+
+    public Question(Scanner scanner) {
+        maxValue = Double.parseDouble(scanner.next());
+        text = scanner.next();
+    }
 
 
     public void print() {
