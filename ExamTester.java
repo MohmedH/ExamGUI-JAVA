@@ -6,6 +6,8 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class ExamTester {
@@ -51,8 +53,17 @@ public class ExamTester {
         exam1.reorderMCAAnswers(-1);
         exam1.print();
         */
+// TODO: 3/14/18  Finish the storing stuff here.
 
+        try {
+            PrintWriter writer = new PrintWriter("stored_exam.txt", "UTF-8");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
+        exam1.save(writer);
 
 
 
