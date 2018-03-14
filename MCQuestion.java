@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -25,6 +26,8 @@ public class MCQuestion extends Question{
             answers.get(i).print();
         }
     }
+
+    public void save(PrintWriter writer){}
 
 
     public ArrayList<MCAnswer> getAnswers() {

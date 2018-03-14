@@ -4,11 +4,12 @@
  netID : slim67
  */
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Question {
+public abstract class Question {
     protected String text; // Question name.
     protected Answer rightAnswer;
     protected Answer studentAnswer;
@@ -32,6 +33,8 @@ public class Question {
         maxValue = Double.parseDouble(scanner.next());
         text = scanner.next();
     }
+
+    abstract public void save(PrintWriter writer);
 
 
     public void print() {

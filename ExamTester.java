@@ -54,9 +54,10 @@ public class ExamTester {
         exam1.print();
         */
 // TODO: 3/14/18  Finish the storing stuff here.
+        PrintWriter writer = null;
 
         try {
-            PrintWriter writer = new PrintWriter("stored_exam.txt", "UTF-8");
+            writer = new PrintWriter("stored_exam.txt", "UTF-8");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {

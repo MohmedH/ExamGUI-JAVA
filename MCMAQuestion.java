@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,7 +17,18 @@ public class MCMAQuestion extends MCQuestion{
         this.maxValue = maxValue;
         this.studentAnswer = new ArrayList<Answer>();
         this.answers = new ArrayList<MCAnswer>();
+    }
 
+    public void save(PrintWriter writer) {
+        writer.write(text);
+        char[] answerAlphabet = {'A', 'B', 'C', 'D', 'E'};
+        // get the answer and print out.
+        System.out.println(this.getTheQuestion());
+        int numOfAnswers = answers.size();
+        for (int i=0; i < numOfAnswers; i++) {
+            System.out.print(" " + answerAlphabet[i] + ". ");
+            answers.get(i).print();
+        }
     }
 
     public MCMAQuestion(Scanner scanner) {

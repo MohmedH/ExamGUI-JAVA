@@ -4,6 +4,7 @@
  netID : slim67
  */
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -57,7 +58,13 @@ public class Exam {
         return (tok.equals("SAQuestion") || tok.equals("NumQuestion") || tok.equals("MCSAQuestion") || tok.equals("MCMAQuestion"));
     }
 
-
+    public void save(PrintWriter writer) {
+        writer.write(text);
+        writer.flush();
+        for (Question q : questions) {
+            q.save(writer);
+        }
+    }
 
     /** It prints out the whole exam including questions and answers.*/
     public void print() {
