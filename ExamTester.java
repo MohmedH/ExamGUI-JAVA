@@ -20,7 +20,7 @@ public class ExamTester {
         // Create a scanner instances and try to print out.
 
         // Get the files from here.
-        File examFile = new File("exam.txt");
+        File examFile = new File("src/exam.txt");
         File answerFile = new File("src/student_answer.txt");
 
         //Path source = Paths.get("exam_data.txt");\
@@ -49,9 +49,10 @@ public class ExamTester {
 
         exam1.reorderQuestions();
         exam1.reorderMCAAnswers(-1);
+        exam1.print();
         */
 
-        exam1.print();
+
 
 
 
