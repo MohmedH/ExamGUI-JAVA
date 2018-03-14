@@ -65,11 +65,10 @@ public class ExamTester {
         }
 
 
-
-        exam1.reorderQuestions();
-        exam1.reorderMCAAnswers(-1);
-        exam1.print();
         exam1.save(writer);
+        System.out.println("The exam is saved. Can be loaded later.");
+
+
 
 
 

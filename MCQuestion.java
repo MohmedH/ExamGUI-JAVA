@@ -15,6 +15,14 @@ public class MCQuestion extends Question{
         answers = new ArrayList<MCAnswer>();
     }
 
+    public Answer getNewAnswer() {
+        return new MCAnswer();
+    }
+
+    @Override
+    public void getAnswerFromStudent() {
+
+    }
 
     public void print() {
         char[] answerAlphabet = {'A', 'B', 'C', 'D', 'E'};
@@ -33,7 +41,6 @@ public class MCQuestion extends Question{
     public ArrayList<MCAnswer> getAnswers() {
         return answers;
     }
-
 
     public void addAnswer(MCAnswer ans) {
         // If there are less than 5 answers then add a answer.

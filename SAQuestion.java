@@ -14,6 +14,7 @@ public class SAQuestion extends Question{
     }
 
     public SAQuestion(Scanner scanner) {
+        System.out.println("SAQuestion!!!!");
         maxValue = Double.parseDouble(scanner.nextLine());
         //System.out.println(maxValue);
         text = scanner.nextLine();
@@ -24,15 +25,18 @@ public class SAQuestion extends Question{
 
     public Answer getNewAnswer() {
 
-        return new Answer();
+        return new SAAnswer();
     }
 
     public void save(PrintWriter writer) {
-        writer.write(text + "\n\n");
+        writer.write(text + "\n");
+        //System.out.println(rightAnswer.getClass().getName());
+        rightAnswer.save(writer);
+
     }
 
     public Answer getNewAnswer(String text) {
-        return new Answer();
+        return new SAAnswer(text);
     }
 
     public void getAnswerFromStudent() {

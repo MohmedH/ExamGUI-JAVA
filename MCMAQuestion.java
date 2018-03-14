@@ -11,6 +11,7 @@ public class MCMAQuestion extends MCQuestion{
         baseCredit = 0;
     }
 
+
     public MCMAQuestion(String text, double maxValue, double baseCredit) {
         super();
         this.text = text;
@@ -19,16 +20,19 @@ public class MCMAQuestion extends MCQuestion{
         this.answers = new ArrayList<MCAnswer>();
     }
 
+
     public void save(PrintWriter writer) {
         writer.write(text + "\n");
-        char[] answerAlphabet = {'A', 'B', 'C', 'D', 'E'};
         // get the answer and print out.
         int numOfAnswers = answers.size();
+        writer.write(Double.toString(baseCredit));
+        writer.write(Integer.toString(numOfAnswers) + "\n");
         for (int i=0; i < numOfAnswers; i++) {
-            writer.write(" " + answerAlphabet[i] + ". ");
-            writer.write(" " + answers.get(i).text + "\n");
+            answers.get(i).save(writer);
         }
+        writer.write("\n");
     }
+
 
     public MCMAQuestion(Scanner scanner) {
         super();
@@ -42,12 +46,9 @@ public class MCMAQuestion extends MCQuestion{
         int numOfexamples = Integer.parseInt(scanner.nextLine());
         for(int i = 0; i < numOfexamples; i++) {
             double score = Double.parseDouble(scanner.next());
+
             String ansText = scanner.nextLine();
             MCMAAnswer ans = new MCMAAnswer(ansText, score);
-            //System.out.print(score);
-            //System.out.println(ansText);
-            //System.out.println(ans);
-            //System.out.println(answers);
             answers.add(ans);
 
         }

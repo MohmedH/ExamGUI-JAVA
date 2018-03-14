@@ -43,9 +43,9 @@ public class MCSAQuestion extends MCQuestion{
         writer.write(text + "\n");
         // get the answer and print out.
         int numOfAnswers = answers.size();
-        writer.write(numOfAnswers);
+        writer.write(Integer.toString(numOfAnswers) + "\n");
         for (int i=0; i < numOfAnswers; i++) {
-
+            answers.get(i).save(writer);
         }
         writer.write("\n");
 
