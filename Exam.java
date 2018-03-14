@@ -62,7 +62,8 @@ public class Exam {
         writer.write(text + "\n\n");
         int i = 0;
         for (Question q : questions) {
-            writer.write("Q." + (i+1) + ": ");
+            writer.write(q.getClass().getName() + "\n");
+            writer.write(Double.toString(q.maxValue) + "\n");
             q.save(writer);
             i++;
         }
