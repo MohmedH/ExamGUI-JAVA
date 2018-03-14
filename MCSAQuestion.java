@@ -12,6 +12,28 @@ public class MCSAQuestion extends MCQuestion{
         super(text, maxValue);
     }
 
+    public MCSAQuestion(Scanner scanner) {
+        maxValue = Double.parseDouble(scanner.nextLine());
+        //System.out.println(maxValue);
+        text = scanner.nextLine();
+        answers = new ArrayList<MCAnswer>();
+        //System.out.println(text);
+        int numOfExamples = Integer.parseInt(scanner.nextLine());
+        double score = 0.0;
+        for (int i=0; i < numOfExamples; i++) {
+            score = Double.parseDouble(scanner.next());
+            //scanner.nextLine();
+            String ansText = scanner.nextLine();
+            MCAnswer ans = new MCSAAnswer(ansText, score);
+            //System.out.print(score);
+            //System.out.println(ansText);
+            //System.out.println(answers);
+            //System.out.println(ans);
+            answers.add(ans);
+        }
+
+    }
+
     public Answer getNewAnswer() {
         
         return new Answer();

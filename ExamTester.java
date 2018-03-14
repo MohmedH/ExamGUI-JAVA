@@ -41,10 +41,17 @@ public class ExamTester {
         System.out.println("print out the exam constructor stuff");
         Exam exam1 = new Exam(examScanner);
 
+        exam1.print();
 
+        /*
 
+        Reorder the exam!
 
+        exam1.reorderQuestions();
+        exam1.reorderMCAAnswers(-1);
+        */
 
+        exam1.print();
 
 
 

@@ -24,34 +24,31 @@ public class Exam {
     public Exam(Scanner scanner) {
         System.out.println("exam constructor");
         text = scanner.nextLine();
+        System.out.println(text);
         questions = new ArrayList<Question>();
         System.out.println("======");
         while(scanner.hasNext()) {
             Question q = _createQuestion(scanner);
+            if (q != null) {
+                addQuestion(q);
+            }
         }
     }
 
-    /*
-    MCSAQuestion
-    MCMAQuestion
-    NumQuestion
-    SAQuestion
-     */
 
     public Question _createQuestion(Scanner scanner) {
-        String tok = scanner.next();
-        switch (tok) {
-            case("SAQuestion"):
-                return new SAQuestion(scanner);
-                break;
-            case("NumQuestion"):
-                break;
-            case("MCMAQuestion"):
-                break;
-            case("MCSAQuestion"):
-                break;
+        String tok = scanner.nextLine();
 
+        if (tok.equals("SAQuestion")) {
+            return new SAQuestion(scanner);
         }
+        if (tok.equals("MCMAQuestion")) {
+            return new MCMAQuestion(scanner);
+        }
+        if (tok.equals("MCSAQuestion")) {
+            return new MCSAQuestion(scanner);
+        }
+        return null;
 
     }
 

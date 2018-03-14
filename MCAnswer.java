@@ -1,13 +1,20 @@
 public class MCAnswer extends Answer {
-    private String text;
-    private boolean selected;
-    private double creditIfSelected;
+    protected String text;
+    protected boolean selected;
+    protected double creditIfSelected;
 
     public MCAnswer(String s, double credit) {
         text = s;
         creditIfSelected = credit;
         selected = false;
     }
+
+    public MCAnswer() {
+        text = null;
+        creditIfSelected = 0.0;
+        selected = false;
+    }
+
 
     /** This function prints out the answer.*/
     public void print() {

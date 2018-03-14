@@ -4,6 +4,11 @@ import java.util.Collections;
 public class MCQuestion extends Question{
     protected ArrayList<MCAnswer> answers;
 
+    public MCQuestion() {
+        super();
+        answers = null;
+    }
+
     public MCQuestion(String s, double maxVal) {
         super(s, maxVal);
         answers = new ArrayList<MCAnswer>();

@@ -13,9 +13,12 @@ public class SAQuestion extends Question{
     }
 
     public SAQuestion(Scanner scanner) {
-        maxValue = Double.parseDouble(scanner.next());
-        text = scanner.next();
+        maxValue = Double.parseDouble(scanner.nextLine());
+        //System.out.println(maxValue);
+        text = scanner.nextLine();
+        //System.out.println(text);
         rightAnswer = new SAAnswer(scanner);
+
     }
 
     public Answer getNewAnswer() {

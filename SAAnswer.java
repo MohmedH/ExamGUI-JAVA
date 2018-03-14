@@ -15,7 +15,7 @@ public class SAAnswer extends Answer {
     }
 
     public SAAnswer(Scanner scanner) {
-        text = scanner.next();
+        text = scanner.nextLine();
     }
     
     public void print() {
