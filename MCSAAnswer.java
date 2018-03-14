@@ -5,6 +5,8 @@
  */
 
 public class MCSAAnswer extends MCAnswer {
+
+    public MCSAAnswer(){}
     
     public MCSAAnswer(String text, double creditIfSelected) {
 

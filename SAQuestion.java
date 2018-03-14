@@ -29,7 +29,6 @@ public class SAQuestion extends Question{
 
     public void save(PrintWriter writer) {
         writer.write(text + "\n\n");
-
     }
 
     public Answer getNewAnswer(String text) {

@@ -1,3 +1,5 @@
+import java.io.PrintWriter;
+
 public class MCAnswer extends Answer {
     protected String text;
     protected boolean selected;
@@ -15,11 +17,13 @@ public class MCAnswer extends Answer {
         selected = false;
     }
 
-
     /** This function prints out the answer.*/
     public void print() {
         System.out.println(text);
+    }
 
+    public void save(PrintWriter writer) {
+        writer.write(text + "\n");
     }
 
     public void setSelected(boolean b) {

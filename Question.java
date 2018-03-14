@@ -36,26 +36,17 @@ public abstract class Question {
 
     abstract public void save(PrintWriter writer);
 
-
     public void print() {
         System.out.println(text);
 
     }
-
     public void setRightAnswer(Answer ans) {
         rightAnswer = ans;
     }
 
-    public Answer getNewAnswer() {
-        /*
-        This is an Abstract method. Creates and returns a new answer obj.
-         */
-        return new Answer();
-    }
+    abstract public Answer getNewAnswer();
 
-    public void getAnswerFromStudent() {
-
-    }
+    abstract public void getAnswerFromStudent();
 
     public Answer getRightAnswer() {
         return rightAnswer;

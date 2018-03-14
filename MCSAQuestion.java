@@ -36,24 +36,23 @@ public class MCSAQuestion extends MCQuestion{
     }
 
     public Answer getNewAnswer() {
-        return new Answer();
+        return new MCSAAnswer();
     }
 
     public void save(PrintWriter writer) {
         writer.write(text + "\n");
-        char[] answerAlphabet = {'A', 'B', 'C', 'D', 'E'};
         // get the answer and print out.
         int numOfAnswers = answers.size();
+        writer.write(numOfAnswers);
         for (int i=0; i < numOfAnswers; i++) {
-            writer.write(" " + answerAlphabet[i] + ". ");
-            writer.write(" " + answers.get(i).text + "\n");
+
         }
         writer.write("\n");
 
     }
 
     public Answer getNewAnswer(String text, double creditIfSelected) {
-        return new Answer();
+        return new MCSAAnswer(text, creditIfSelected);
     }
 
     /** ask a student for an answer */
