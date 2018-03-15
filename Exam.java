@@ -48,8 +48,8 @@ public class Exam {
             return new MCSAQuestion(scanner);
         }
         return null;
-
     }
+
 
     public void saveStudentAnswer(PrintWriter writer) {
         Scanner userscan = ScannerFactory.getKeyboardScanner();
@@ -60,8 +60,6 @@ public class Exam {
             q.saveStudentAnswer(writer);
             writer.write("\n");
         }
-
-
         writer.flush();
     }
 
@@ -69,6 +67,7 @@ public class Exam {
     public boolean isTokQuestion(String tok) {
         return (tok.equals("SAQuestion") || tok.equals("NumQuestion") || tok.equals("MCSAQuestion") || tok.equals("MCMAQuestion"));
     }
+
 
     public void save(PrintWriter writer) {
         writer.write(text + "\n\n");
@@ -79,6 +78,31 @@ public class Exam {
 
         }
         writer.flush();
+    }
+
+    public void _createAnswers(Scanner scanner, Question q) {
+        String tok = scanner.nextLine();
+        System.out.println(tok);
+
+        if (tok.equals("SAQuestion")) {
+
+        }
+        if (tok.equals("MCMAQuestion")) {
+
+        }
+        if (tok.equals("MCSAQuestion")) {
+
+        }
+    }
+
+
+    public void restoreStudentAnswers(Scanner scanner) {
+        scanner.nextLine();
+        scanner.nextLine();
+        for (Question q : questions) {
+            _createAnswers(scanner, q);
+        }
+
     }
 
     /** It prints out the whole exam including questions and answers.*/

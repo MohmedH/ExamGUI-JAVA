@@ -26,18 +26,13 @@ public class ExamTester {
         File answerFile = new File("src/student_answer.txt");
 
         //Path source = Paths.get("exam_data.txt");\
-        Scanner examScanner;
-        Scanner answerScanner;
+        Scanner examScanner = null;
         try {
             examScanner = new Scanner(examFile);
-            answerScanner = new Scanner(answerFile);
         }
         //catch the exception
         catch(FileNotFoundException e) {
             e.printStackTrace();
-            examScanner = null;
-            answerScanner = null;
-
         }
 
         System.out.println("print out the exam constructor stuff");
@@ -57,7 +52,7 @@ public class ExamTester {
         PrintWriter writer = null;
 
         try {
-            writer = new PrintWriter("stored_exam.txt", "UTF-8");
+            writer = new PrintWriter("src/stored_exam.txt", "UTF-8");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
@@ -85,7 +80,7 @@ public class ExamTester {
         //System.out.println("Total Score: " + exam1.getValue());
         PrintWriter answer_writer = null;
         try {
-            answer_writer  = new PrintWriter("stored_answer.txt", "UTF-8");
+            answer_writer  = new PrintWriter("src/stored_answer.txt", "UTF-8");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
@@ -93,5 +88,40 @@ public class ExamTester {
         }
 
         exam1.saveStudentAnswer(answer_writer);
+
+
+        exam1 = null;
+        writer = null;
+        answer_writer = null;
+        examScanner = null;
+        examFile = null;
+
+        examFile = new File("src/stored_exam.txt");
+        answerFile = new File("src/stored_answer.txt");
+
+        Scanner answerScanner = null;
+        try {
+            answerScanner = new Scanner(answerFile);
+        }
+        //catch the exception
+        catch(FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            examScanner = new Scanner(examFile);
+        }
+        //catch the exception
+        catch(FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("================ reload exam ================");
+
+        exam1 = new Exam(examScanner);
+        System.out.println("================ reload answers ================");
+        exam1.restoreStudentAnswers(answerScanner);
+
+
+
     }
 }

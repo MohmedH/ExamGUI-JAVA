@@ -23,7 +23,7 @@ public class MCAnswer extends Answer {
     }
 
     public void save(PrintWriter writer) {
-        writer.write(Double.toString(creditIfSelected) + text + "\n");
+        writer.write(Double.toString(creditIfSelected) + " " + text + "\n");
     }
 
     public void setSelected(boolean b) {

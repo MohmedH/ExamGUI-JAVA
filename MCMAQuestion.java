@@ -25,7 +25,7 @@ public class MCMAQuestion extends MCQuestion{
         writer.write(text + "\n");
         // get the answer and print out.
         int numOfAnswers = answers.size();
-        writer.write(Double.toString(baseCredit));
+        writer.write(Double.toString(baseCredit) + "\n");
         writer.write(Integer.toString(numOfAnswers) + "\n");
         for (MCAnswer answer : answers) {
             answer.save(writer);
