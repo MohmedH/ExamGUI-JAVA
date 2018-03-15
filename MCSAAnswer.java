@@ -4,6 +4,8 @@
  netID : slim67
  */
 
+import java.io.PrintWriter;
+
 public class MCSAAnswer extends MCAnswer {
 
     public MCSAAnswer(){}
@@ -12,6 +14,7 @@ public class MCSAAnswer extends MCAnswer {
 
         super(text, creditIfSelected);
     }
+
 
     public double getCredit(Answer rightAnswer) {
         // if the rightAnswers text is same as the current answer's text return the score.

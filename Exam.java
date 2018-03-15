@@ -55,7 +55,14 @@ public class Exam {
         Scanner userscan = ScannerFactory.getKeyboardScanner();
         System.out.print("your name: ");
         String username = userscan.nextLine();
-        writer.write(username);
+        writer.write(username + "\n\n");
+        for (Question q : questions) {
+            q.saveStudentAnswer(writer);
+            writer.write("\n");
+        }
+
+
+        writer.flush();
     }
 
 

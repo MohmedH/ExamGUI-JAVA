@@ -45,6 +45,8 @@ public abstract class Question {
 
     abstract public Answer getNewAnswer();
 
+    public void saveStudentAnswer(PrintWriter writer){}
+
     abstract public void getAnswerFromStudent();
 
     public Answer getRightAnswer() {

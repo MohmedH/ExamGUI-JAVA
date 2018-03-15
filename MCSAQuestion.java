@@ -25,6 +25,7 @@ public class MCSAQuestion extends MCQuestion{
             score = Double.parseDouble(scanner.next());
             //scanner.nextLine();
             String ansText = scanner.nextLine();
+            ansText = ansText.trim();
             MCAnswer ans = new MCSAAnswer(ansText, score);
             //System.out.print(score);
             //System.out.println(ansText);
@@ -37,6 +38,13 @@ public class MCSAQuestion extends MCQuestion{
 
     public void setRightAnswer(Answer answer) {
         rightAnswer = answer;
+    }
+
+    public void saveStudentAnswer(PrintWriter writer) {
+        writer.write("MCSAAnswer\n");
+        if(studentAnswer instanceof MCSAAnswer) {
+            writer.write(((MCSAAnswer) studentAnswer).text + "\n");
+        }
     }
 
     public Answer getNewAnswer() {

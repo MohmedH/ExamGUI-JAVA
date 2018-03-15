@@ -69,6 +69,7 @@ public class ExamTester {
         System.out.println("The exam is saved. Can be loaded later.");
         System.out.println(exam1.getNumberOfQuestions());
 
+
         for(int i=1; i < exam1.getNumberOfQuestions()+1; i++) {
             System.out.println(i);
             exam1.getAnswerFromStudent(i);
@@ -82,6 +83,15 @@ public class ExamTester {
         System.out.println("Q3: " + exam1.getQuestion(2).getValue());
 
         //System.out.println("Total Score: " + exam1.getValue());
+        PrintWriter answer_writer = null;
+        try {
+            answer_writer  = new PrintWriter("stored_answer.txt", "UTF-8");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
+        exam1.saveStudentAnswer(answer_writer);
     }
 }

@@ -33,6 +33,17 @@ public class MCMAQuestion extends MCQuestion{
         writer.write("\n");
     }
 
+    public void saveStudentAnswer(PrintWriter writer) {
+        writer.write("MCSAAnswer\n");
+        writer.write(Integer.toString(studentAnswer.size()) + "\n");
+        for (Answer ans: studentAnswer) {
+            if(ans instanceof MCMAAnswer) {
+                System.out.println(((MCMAAnswer) ans).text);
+                writer.write(((MCMAAnswer) ans).text + "\n");
+            }
+        }
+    }
+
     public void getAnswerFromStudent() {
         System.out.println("(A ~ E)");
         Scanner userInput = ScannerFactory.getKeyboardScanner();
@@ -85,6 +96,7 @@ public class MCMAQuestion extends MCQuestion{
             double score = Double.parseDouble(scanner.next());
 
             String ansText = scanner.nextLine();
+            ansText = ansText.trim();
             MCMAAnswer ans = new MCMAAnswer(ansText, score);
             answers.add(ans);
 

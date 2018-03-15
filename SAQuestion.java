@@ -39,6 +39,13 @@ public class SAQuestion extends Question{
         return new SAAnswer(text);
     }
 
+    public void saveStudentAnswer(PrintWriter writer) {
+        writer.write("SAAnswer\n");
+        if(studentAnswer instanceof SAAnswer) {
+            writer.write(((SAAnswer) studentAnswer).text + "\n");
+        }
+    }
+
     public void getAnswerFromStudent() {
         System.out.print("short answer: ");
         Scanner userInput = ScannerFactory.getKeyboardScanner();
