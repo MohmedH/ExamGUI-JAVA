@@ -132,6 +132,7 @@ public class MCMAQuestion extends MCQuestion{
         }
         sum += baseCredit;
         sum = sum * maxValue;
+
         return sum;
     }
 }
