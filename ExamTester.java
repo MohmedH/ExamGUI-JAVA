@@ -74,5 +74,7 @@ public class ExamTester {
             exam1.getAnswerFromStudent(i);
         }
 
+        exam1.getValue();
+
     }
 }

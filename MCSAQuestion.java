@@ -61,7 +61,7 @@ public class MCSAQuestion extends MCQuestion{
         Scanner userInput = ScannerFactory.getKeyboardScanner();
 
         // get the user input integer
-        String userSelectedAnswer = userInput.next();
+        String userSelectedAnswer = userInput.nextLine();
 
         System.out.println("-    You answered: "+ userSelectedAnswer + ".");
         // do the standard input and then save it as studentAnswer.

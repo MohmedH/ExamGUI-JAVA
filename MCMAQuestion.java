@@ -38,28 +38,35 @@ public class MCMAQuestion extends MCQuestion{
         Scanner userInput = ScannerFactory.getKeyboardScanner();
 
         // get the user input integer
-        String userSelectedAnswer = userInput.next();
+        String userSelectedAnswers = userInput.nextLine();
 
-        System.out.println("-    You answered: "+ userSelectedAnswer + ".");
-        // do the standard input and then save it as studentAnswer.
-        MCAnswer ans;
-        if (userSelectedAnswer.equals("A")) {
-            ans = getAnswers().get(0);
-        } else if (userSelectedAnswer.equals("B")) {
-            ans = getAnswers().get(1);
-        } else if (userSelectedAnswer.equals("C")) {
-            ans = getAnswers().get(2);
-        } else if (userSelectedAnswer.equals("D")) {
-            ans = getAnswers().get(3);
-        } else if (userSelectedAnswer.equals("E")) {
-            ans = getAnswers().get(4);
-        } else {
-            System.out.println("Your answer is not on the answer list. Your input is wrong.");
-            return;
+        String[] arr = userSelectedAnswers.split(" ");
+        MCAnswer ans = null;
+        System.out.print("-  You answered: ");
+        for ( String choice : arr) {
+
+
+            if (choice.equals("A")) {
+                ans = getAnswers().get(0);
+            } else if (choice.equals("B")) {
+                ans = getAnswers().get(1);
+            } else if (choice.equals("C")) {
+                ans = getAnswers().get(2);
+            } else if (choice.equals("D")) {
+                ans = getAnswers().get(3);
+            } else if (choice.equals("E")) {
+                ans = getAnswers().get(4);
+            } else {
+                System.out.println("Your answer is not on the answer list. Your input is wrong.");
+                return;
+            }
+
+            System.out.print(choice + " ");
+
+            ans.setSelected(true);
+            setStudentAnswer(ans);
         }
-        //setAnswersNotSelected();
-        ans.setSelected(true);
-        setStudentAnswer(ans);
+        System.out.println("");
     }
 
 
