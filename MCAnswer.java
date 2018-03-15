@@ -1,7 +1,9 @@
+import java.io.PrintWriter;
+
 public class MCAnswer extends Answer {
-    private String text;
-    private boolean selected;
-    private double creditIfSelected;
+    protected String text;
+    protected boolean selected;
+    protected double creditIfSelected;
 
     public MCAnswer(String s, double credit) {
         text = s;
@@ -9,10 +11,19 @@ public class MCAnswer extends Answer {
         selected = false;
     }
 
+    public MCAnswer() {
+        text = null;
+        creditIfSelected = 0.0;
+        selected = false;
+    }
+
     /** This function prints out the answer.*/
     public void print() {
         System.out.println(text);
+    }
 
+    public void save(PrintWriter writer) {
+        writer.write(Double.toString(creditIfSelected) + " " + text + "\n");
     }
 
     public void setSelected(boolean b) {

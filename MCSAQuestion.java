@@ -4,6 +4,7 @@
  netID : slim67
  */
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,24 +13,85 @@ public class MCSAQuestion extends MCQuestion{
         super(text, maxValue);
     }
 
+    public MCSAQuestion(Scanner scanner) {
+        maxValue = Double.parseDouble(scanner.nextLine());
+        //System.out.println(maxValue);
+        text = scanner.nextLine();
+        answers = new ArrayList<MCAnswer>();
+        //System.out.println(text);
+        int numOfExamples = Integer.parseInt(scanner.nextLine());
+        double score = 0.0;
+        for (int i=0; i < numOfExamples; i++) {
+            score = Double.parseDouble(scanner.next());
+            //scanner.nextLine();
+            String ansText = scanner.nextLine();
+            ansText = ansText.trim();
+            MCAnswer ans = new MCSAAnswer(ansText, score);
+            //System.out.print(score);
+            //System.out.println(ansText);
+            //System.out.println(answers);
+            //System.out.println(ans);
+            answers.add(ans);
+        }
+
+    }
+
+    public void setRightAnswer(Answer answer) {
+        rightAnswer = answer;
+    }
+
+    public void saveStudentAnswer(PrintWriter writer) {
+        writer.write("MCSAAnswer\n");
+        if(studentAnswer instanceof MCSAAnswer) {
+            writer.write(((MCSAAnswer) studentAnswer).text + "\n");
+        }
+    }
+
     public Answer getNewAnswer() {
-        
-        return new Answer();
+        return new MCSAAnswer();
+    }
+
+    public void save(PrintWriter writer) {
+        writer.write(text + "\n");
+        // get the answer and print out.
+        int numOfAnswers = answers.size();
+        writer.write(Integer.toString(numOfAnswers) + "\n");
+        for (int i=0; i < numOfAnswers; i++) {
+            answers.get(i).save(writer);
+        }
+        writer.write("\n");
+
+    }
+
+    public void restoreStudentAnswers(Scanner scanner) {
+        System.out.println("-- MCSAQuestion resotore answer");
+        String ansText = scanner.nextLine();
+        double score = 0.0;
+        for(MCAnswer ans: answers) {
+            if(ans.text.equals(ansText)){
+                score = ans.creditIfSelected;
+            }
+        }
+        System.out.println(score + " " + ansText);
+        MCSAAnswer ans = new MCSAAnswer(ansText, score);
+        ans.setSelected(true);
+        setStudentAnswer(ans);
+
     }
 
     public Answer getNewAnswer(String text, double creditIfSelected) {
-        return new Answer();
+        return new MCSAAnswer(text, creditIfSelected);
     }
 
     /** ask a student for an answer */
     public void getAnswerFromStudent() {
         System.out.println("(A ~ E)");
-        Scanner userInput = new Scanner(System.in);
+        Scanner userInput = ScannerFactory.getKeyboardScanner();
 
         // get the user input integer
-        String userSelectedAnswer = userInput.next();
+        String userSelectedAnswer = userInput.nextLine();
 
-        System.out.println("-    You answered: "+ userSelectedAnswer + ".");
+        System.out.println("-    You answered: "+ userSelectedAnswer + "");
         // do the standard input and then save it as studentAnswer.
         MCAnswer ans;
         if (userSelectedAnswer.equals("A")) {
@@ -60,13 +122,13 @@ public class MCSAQuestion extends MCQuestion{
     }
 
     public double getValue(){
-        ArrayList<MCAnswer> answers = getAnswers();
-        double score = 0.0;
-        for (int i = 0; i < answers.size(); i++ ) {
-            if (answers.get(i).getSelected()){
-                score += answers.get(i).getCredit(getRightAnswer());
+        //ArrayList<MCAnswer> answers = getAnswers();
+        Answer studentAnswer = getStudentAnswer();
+        if (studentAnswer instanceof MCSAAnswer){
+            if(((MCSAAnswer) studentAnswer).selected) {
+                return ((MCSAAnswer) studentAnswer).getCreditIfSelected() * maxValue ;
             }
         }
-        return score;
+        return 0.0;
     }
 }

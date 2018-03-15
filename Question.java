@@ -4,10 +4,12 @@
  netID : slim67
  */
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
-public class Question {
+public abstract class Question {
     protected String text; // Question name.
     protected Answer rightAnswer;
     protected Answer studentAnswer;
@@ -20,25 +22,34 @@ public class Question {
         maxValue = val;
     }
 
+    public Question() {
+        text = null;
+        rightAnswer = null;
+        studentAnswer = null;
+        maxValue = 0.0;
+    }
+
+    public Question(Scanner scanner) {
+        maxValue = Double.parseDouble(scanner.next());
+        text = scanner.next();
+    }
+
+    public void restoreStudentAnswers(Scanner scanner) {}
+
+    abstract public void save(PrintWriter writer);
+
     public void print() {
         System.out.println(text);
 
     }
 
-    public void setRightAnswer(Answer ans) {
-        rightAnswer = ans;
-    }
+    public void setRightAnswer() {}
 
-    public Answer getNewAnswer() {
-        /*
-        This is an Abstract method. Creates and returns a new answer obj.
-         */
-        return new Answer();
-    }
+    abstract public Answer getNewAnswer();
 
-    public void getAnswerFromStudent() {
+    public void saveStudentAnswer(PrintWriter writer){}
 
-    }
+    abstract public void getAnswerFromStudent();
 
     public Answer getRightAnswer() {
         return rightAnswer;

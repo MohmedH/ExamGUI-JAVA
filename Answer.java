@@ -4,7 +4,9 @@
  netID : slim67
  */
 
-public class Answer {
+import java.io.PrintWriter;
+
+public abstract class Answer {
 
     /** Answer constructor */
     public Answer() {}
@@ -16,4 +18,6 @@ public class Answer {
     public double getCredit(Answer rightAnswer) {
         return 0.0;
     }
+
+    abstract public void save(PrintWriter writer);
 }

@@ -1,14 +1,32 @@
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class MCQuestion extends Question{
     protected ArrayList<MCAnswer> answers;
 
+    public MCQuestion() {
+        super();
+        answers = null;
+    }
+
     public MCQuestion(String s, double maxVal) {
         super(s, maxVal);
         answers = new ArrayList<MCAnswer>();
     }
 
+    public Answer getNewAnswer() {
+        return new MCAnswer();
+    }
+
+    @Override
+    public void getAnswerFromStudent() {
+
+    }
+
+    public double getValue(MCAnswer ans) {
+        return 0.0;
+    }
 
     public void print() {
         char[] answerAlphabet = {'A', 'B', 'C', 'D', 'E'};
@@ -21,11 +39,12 @@ public class MCQuestion extends Question{
         }
     }
 
+    public void save(PrintWriter writer){}
+
 
     public ArrayList<MCAnswer> getAnswers() {
         return answers;
     }
-
 
     public void addAnswer(MCAnswer ans) {
         // If there are less than 5 answers then add a answer.

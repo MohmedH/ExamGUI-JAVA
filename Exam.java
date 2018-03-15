@@ -4,6 +4,7 @@
  netID : slim67
  */
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -22,12 +23,73 @@ public class Exam {
     }
 
     public Exam(Scanner scanner) {
-
-
+        text = scanner.nextLine();
+        System.out.println(text);
+        questions = new ArrayList<Question>();
+        while(scanner.hasNext()) {
+            Question q = _createQuestion(scanner);
+            if (q != null) {
+                addQuestion(q);
+            }
+        }
     }
 
 
+    public Question _createQuestion(Scanner scanner) {
+        String tok = scanner.nextLine();
 
+        if (tok.equals("SAQuestion")) {
+            return new SAQuestion(scanner);
+        }
+        if (tok.equals("MCMAQuestion")) {
+            return new MCMAQuestion(scanner);
+        }
+        if (tok.equals("MCSAQuestion")) {
+            return new MCSAQuestion(scanner);
+        }
+        return null;
+    }
+
+
+    public void saveStudentAnswer(PrintWriter writer) {
+        Scanner userscan = ScannerFactory.getKeyboardScanner();
+        System.out.print("your name: ");
+        String username = userscan.nextLine();
+        writer.write(username + "\n\n");
+        for (Question q : questions) {
+            q.saveStudentAnswer(writer);
+            writer.write("\n");
+        }
+        writer.flush();
+    }
+
+
+    public boolean isTokQuestion(String tok) {
+        return (tok.equals("SAQuestion") || tok.equals("NumQuestion") || tok.equals("MCSAQuestion") || tok.equals("MCMAQuestion"));
+    }
+
+
+    public void save(PrintWriter writer) {
+        writer.write(text + "\n\n");
+        for (Question q : questions) {
+            writer.write(q.getClass().getName() + "\n");
+            writer.write(Double.toString(q.maxValue) + "\n");
+            q.save(writer);
+        }
+        writer.flush();
+    }
+
+
+    public void restoreStudentAnswers(Scanner scanner) {
+        scanner.nextLine();
+        while(scanner.hasNext()) {
+            for (Question q : questions) {
+                scanner.nextLine();
+                scanner.nextLine();
+                q.restoreStudentAnswers(scanner);
+            }
+        }
+    }
 
     /** It prints out the whole exam including questions and answers.*/
     public void print() {
@@ -44,7 +106,7 @@ public class Exam {
             j++;
         }
         System.out.println("\n\nEnd of Exam. Congratulation!!");
-        System.out.println("-------------------------------------------------------------\n\n");
+        System.out.println("-------------------------------------------------------------");
     }
 
 
@@ -117,6 +179,10 @@ public class Exam {
 
     /** Takes an integer and returns the question from the array list. */
     public Question getQuestion(int i) {
+        if (i >= questions.size()) {
+            System.out.println("index out of bound!!");
+            return null;
+        }
         return questions.get(i); // returns the ith question instance.
     }
 
