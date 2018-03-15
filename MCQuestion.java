@@ -24,6 +24,10 @@ public class MCQuestion extends Question{
 
     }
 
+    public double getValue(MCAnswer ans) {
+        return 0.0;
+    }
+
     public void print() {
         char[] answerAlphabet = {'A', 'B', 'C', 'D', 'E'};
         // get the answer and print out.

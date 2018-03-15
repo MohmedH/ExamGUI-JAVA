@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MCMAQuestion extends MCQuestion{
-    private ArrayList<Answer> studentAnswer; // answer array list.
+    protected ArrayList<Answer> studentAnswer; // answer array list.
     private double baseCredit;
 
     public MCMAQuestion(){
@@ -64,7 +64,7 @@ public class MCMAQuestion extends MCQuestion{
             System.out.print(choice + " ");
 
             ans.setSelected(true);
-            setStudentAnswer(ans);
+            studentAnswer.add(ans);
         }
         System.out.println("");
     }
@@ -89,6 +89,21 @@ public class MCMAQuestion extends MCQuestion{
             answers.add(ans);
 
         }
+    }
+
+    public double getValue(){
+        //ArrayList<MCAnswer> answers = getAnswers();
+        double sum = 0.0;
+        for (Answer ans: studentAnswer) {
+            if (ans instanceof MCMAAnswer){
+                if(((MCMAAnswer) ans).selected) {
+                    sum += ((MCMAAnswer) ans).getCreditIfSelected();
+                }
+            }
+        }
+        sum += baseCredit;
+        sum = sum * maxValue;
+        return sum;
     }
 
 

@@ -40,9 +40,8 @@ public abstract class Question {
         System.out.println(text);
 
     }
-    public void setRightAnswer(Answer ans) {
-        rightAnswer = ans;
-    }
+
+    public void setRightAnswer() {}
 
     abstract public Answer getNewAnswer();
 

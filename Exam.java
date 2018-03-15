@@ -23,11 +23,9 @@ public class Exam {
     }
 
     public Exam(Scanner scanner) {
-        System.out.println("exam constructor");
         text = scanner.nextLine();
         System.out.println(text);
         questions = new ArrayList<Question>();
-        System.out.println("======");
         while(scanner.hasNext()) {
             Question q = _createQuestion(scanner);
             if (q != null) {
@@ -51,6 +49,13 @@ public class Exam {
         }
         return null;
 
+    }
+
+    public void saveStudentAnswer(PrintWriter writer) {
+        Scanner userscan = ScannerFactory.getKeyboardScanner();
+        System.out.print("your name: ");
+        String username = userscan.nextLine();
+        writer.write(username);
     }
 
 

@@ -35,6 +35,10 @@ public class MCSAQuestion extends MCQuestion{
 
     }
 
+    public void setRightAnswer(Answer answer) {
+        rightAnswer = answer;
+    }
+
     public Answer getNewAnswer() {
         return new MCSAAnswer();
     }
@@ -94,17 +98,13 @@ public class MCSAQuestion extends MCQuestion{
     }
 
     public double getValue(){
-        ArrayList<MCAnswer> answers = getAnswers();
-        double score = 0.0;
-        for (int i = 0; i < answers.size(); i++ ) {
-            if (answers.get(i).getSelected()){
-                score += answers.get(i).getCredit(rightAnswer);
-                System.out.println("====MCSAQ get value====");
-                System.out.println(answers.get(i).creditIfSelected);
-                System.out.println(answers.get(i).text);
-                System.out.println(answers.get(i).getCredit(rightAnswer));
+        //ArrayList<MCAnswer> answers = getAnswers();
+        Answer studentAnswer = getStudentAnswer();
+        if (studentAnswer instanceof MCSAAnswer){
+            if(((MCSAAnswer) studentAnswer).selected) {
+                return ((MCSAAnswer) studentAnswer).getCreditIfSelected() * maxValue ;
             }
         }
-        return score;
+        return 0.0;
     }
 }
