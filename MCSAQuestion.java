@@ -58,7 +58,7 @@ public class MCSAQuestion extends MCQuestion{
     /** ask a student for an answer */
     public void getAnswerFromStudent() {
         System.out.println("(A ~ E)");
-        Scanner userInput = new Scanner(System.in);
+        Scanner userInput = ScannerFactory.getKeyboardScanner();
 
         // get the user input integer
         String userSelectedAnswer = userInput.next();

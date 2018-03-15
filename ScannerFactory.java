@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class ScannerFactory {
-    static private Scanner keyboardScanner;
+    static private Scanner keyboardScanner = new Scanner(System.in);
 
-    static private Scanner getKeyboardScanner() {
+    static public Scanner getKeyboardScanner() {
         return keyboardScanner;
     }
 

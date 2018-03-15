@@ -67,10 +67,12 @@ public class ExamTester {
 
         exam1.save(writer);
         System.out.println("The exam is saved. Can be loaded later.");
+        System.out.println(exam1.getNumberOfQuestions());
 
-
-
-
+        for(int i=1; i < exam1.getNumberOfQuestions()+1; i++) {
+            System.out.println(i);
+            exam1.getAnswerFromStudent(i);
+        }
 
     }
 }
