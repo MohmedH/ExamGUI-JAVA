@@ -63,7 +63,7 @@ public class MCSAQuestion extends MCQuestion{
         // get the user input integer
         String userSelectedAnswer = userInput.nextLine();
 
-        System.out.println("-    You answered: "+ userSelectedAnswer + ".");
+        System.out.println("-    You answered: "+ userSelectedAnswer + "");
         // do the standard input and then save it as studentAnswer.
         MCAnswer ans;
         if (userSelectedAnswer.equals("A")) {
@@ -98,7 +98,11 @@ public class MCSAQuestion extends MCQuestion{
         double score = 0.0;
         for (int i = 0; i < answers.size(); i++ ) {
             if (answers.get(i).getSelected()){
-                score += answers.get(i).getCredit(getRightAnswer());
+                score += answers.get(i).getCredit(rightAnswer);
+                System.out.println("====MCSAQ get value====");
+                System.out.println(answers.get(i).creditIfSelected);
+                System.out.println(answers.get(i).text);
+                System.out.println(answers.get(i).getCredit(rightAnswer));
             }
         }
         return score;

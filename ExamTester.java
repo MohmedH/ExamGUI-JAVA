@@ -74,7 +74,14 @@ public class ExamTester {
             exam1.getAnswerFromStudent(i);
         }
 
-        exam1.getValue();
+
+        System.out.println("**** Score Report ****");
+
+        System.out.println("Q1: " + exam1.getQuestion(0).getValue());
+        System.out.println("Q2: " + exam1.getQuestion(1).getValue());
+        System.out.println("Q3: " + exam1.getQuestion(2).getValue());
+
+        //System.out.println("Total Score: " + exam1.getValue());
 
     }
 }

@@ -157,6 +157,10 @@ public class Exam {
 
     /** Takes an integer and returns the question from the array list. */
     public Question getQuestion(int i) {
+        if (i >= questions.size()) {
+            System.out.println("index out of bound!!");
+            return null;
+        }
         return questions.get(i); // returns the ith question instance.
     }
 
