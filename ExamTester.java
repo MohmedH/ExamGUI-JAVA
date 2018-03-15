@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class ExamTester {
@@ -24,6 +25,7 @@ public class ExamTester {
         // Get the files from here.
         File examFile = new File("src/exam.txt");
         File answerFile = new File("src/student_answer.txt");
+
 
         //Path source = Paths.get("exam_data.txt");\
         Scanner examScanner = null;
