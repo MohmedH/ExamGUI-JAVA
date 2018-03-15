@@ -63,6 +63,22 @@ public class MCSAQuestion extends MCQuestion{
 
     }
 
+    public void restoreStudentAnswers(Scanner scanner) {
+        System.out.println("-- MCSAQuestion resotore answer");
+        String ansText = scanner.nextLine();
+        double score = 0.0;
+        for(MCAnswer ans: answers) {
+            if(ans.text.equals(ansText)){
+                score = ans.creditIfSelected;
+            }
+        }
+        System.out.println(score + " " + ansText);
+        MCSAAnswer ans = new MCSAAnswer(ansText, score);
+        ans.setSelected(true);
+        setStudentAnswer(ans);
+
+    }
+
     public Answer getNewAnswer(String text, double creditIfSelected) {
         return new MCSAAnswer(text, creditIfSelected);
     }

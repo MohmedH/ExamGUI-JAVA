@@ -11,7 +11,6 @@ public class MCMAQuestion extends MCQuestion{
         baseCredit = 0;
     }
 
-
     public MCMAQuestion(String text, double maxValue, double baseCredit) {
         super();
         this.text = text;
@@ -33,16 +32,38 @@ public class MCMAQuestion extends MCQuestion{
         writer.write("\n");
     }
 
+
+    public void restoreStudentAnswers(Scanner scanner) {
+        System.out.println("--MCMAuestion resotore answer");
+        int numOfAnswers = Integer.parseInt(scanner.nextLine());
+
+        double score = 0.0;
+        String ansText = "";
+        for(int i=0; i < numOfAnswers; i++) {
+            ansText = scanner.nextLine();
+            for(MCAnswer ans: answers) {
+                if(ans.text.equals(ansText)){
+                    score = ans.creditIfSelected;
+                }
+            }
+            System.out.println(score + " " + ansText);
+            MCMAAnswer ans = new MCMAAnswer(ansText, score);
+            ans.setSelected(true);
+            studentAnswer.add(ans);
+        }
+    }
+
+
     public void saveStudentAnswer(PrintWriter writer) {
-        writer.write("MCSAAnswer\n");
+        writer.write("MCMAAnswer\n");
         writer.write(Integer.toString(studentAnswer.size()) + "\n");
         for (Answer ans: studentAnswer) {
             if(ans instanceof MCMAAnswer) {
-                System.out.println(((MCMAAnswer) ans).text);
                 writer.write(((MCMAAnswer) ans).text + "\n");
             }
         }
     }
+
 
     public void getAnswerFromStudent() {
         System.out.println("(A ~ E)");
@@ -55,8 +76,6 @@ public class MCMAQuestion extends MCQuestion{
         MCAnswer ans = null;
         System.out.print("-  You answered: ");
         for ( String choice : arr) {
-
-
             if (choice.equals("A")) {
                 ans = getAnswers().get(0);
             } else if (choice.equals("B")) {
@@ -81,7 +100,6 @@ public class MCMAQuestion extends MCQuestion{
     }
 
 
-
     public MCMAQuestion(Scanner scanner) {
         super();
         maxValue = Double.parseDouble(scanner.nextLine());
@@ -94,14 +112,13 @@ public class MCMAQuestion extends MCQuestion{
         int numOfexamples = Integer.parseInt(scanner.nextLine());
         for(int i = 0; i < numOfexamples; i++) {
             double score = Double.parseDouble(scanner.next());
-
             String ansText = scanner.nextLine();
             ansText = ansText.trim();
             MCMAAnswer ans = new MCMAAnswer(ansText, score);
             answers.add(ans);
-
         }
     }
+
 
     public double getValue(){
         //ArrayList<MCAnswer> answers = getAnswers();
@@ -117,6 +134,4 @@ public class MCMAQuestion extends MCQuestion{
         sum = sum * maxValue;
         return sum;
     }
-
-
 }

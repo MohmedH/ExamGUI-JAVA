@@ -14,7 +14,6 @@ public class SAQuestion extends Question{
     }
 
     public SAQuestion(Scanner scanner) {
-        System.out.println("SAQuestion!!!!");
         maxValue = Double.parseDouble(scanner.nextLine());
         //System.out.println(maxValue);
         text = scanner.nextLine();
@@ -44,6 +43,14 @@ public class SAQuestion extends Question{
         if(studentAnswer instanceof SAAnswer) {
             writer.write(((SAAnswer) studentAnswer).text + "\n");
         }
+    }
+
+    public void restoreStudentAnswers(Scanner scanner) {
+        String answer = scanner.nextLine();
+        System.out.println("--SAAnswer restore answer:");
+        System.out.println(answer);
+        studentAnswer = new SAAnswer(answer);
+
     }
 
     public void getAnswerFromStudent() {

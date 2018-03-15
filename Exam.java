@@ -75,34 +75,20 @@ public class Exam {
             writer.write(q.getClass().getName() + "\n");
             writer.write(Double.toString(q.maxValue) + "\n");
             q.save(writer);
-
         }
         writer.flush();
-    }
-
-    public void _createAnswers(Scanner scanner, Question q) {
-        String tok = scanner.nextLine();
-        System.out.println(tok);
-
-        if (tok.equals("SAQuestion")) {
-
-        }
-        if (tok.equals("MCMAQuestion")) {
-
-        }
-        if (tok.equals("MCSAQuestion")) {
-
-        }
     }
 
 
     public void restoreStudentAnswers(Scanner scanner) {
         scanner.nextLine();
-        scanner.nextLine();
-        for (Question q : questions) {
-            _createAnswers(scanner, q);
+        while(scanner.hasNext()) {
+            for (Question q : questions) {
+                scanner.nextLine();
+                scanner.nextLine();
+                q.restoreStudentAnswers(scanner);
+            }
         }
-
     }
 
     /** It prints out the whole exam including questions and answers.*/
@@ -120,7 +106,7 @@ public class Exam {
             j++;
         }
         System.out.println("\n\nEnd of Exam. Congratulation!!");
-        System.out.println("-------------------------------------------------------------\n\n");
+        System.out.println("-------------------------------------------------------------");
     }
 
 

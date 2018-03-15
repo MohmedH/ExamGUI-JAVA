@@ -18,7 +18,6 @@ public class SAAnswer extends Answer {
     }
 
     public SAAnswer(Scanner scanner) {
-        System.out.println("SAAnswer constructor");
         text = scanner.nextLine();
     }
     

@@ -34,6 +34,8 @@ public abstract class Question {
         text = scanner.next();
     }
 
+    public void restoreStudentAnswers(Scanner scanner) {}
+
     abstract public void save(PrintWriter writer);
 
     public void print() {
