@@ -1,9 +1,3 @@
-/*
- Class : CS-362
- Name  : Seho Lim
- netID : slim67
- */
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -12,10 +6,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ExamTester {
-
-
-    public static void main(String []args) {
+public class ExamGrader {
+    public static void main(String[] args){
         // Get the files from here.
         /*
         DESCRIPTION : Load up an Exam file and an Answer file, confirming that they are a matched set
@@ -34,7 +26,7 @@ public class ExamTester {
 
 
 
-        File studentAnswerFile = new File("./src/student_answer.txt");
+        File studentAnswerFile = new File("./src/Lim_answer.txt");
         Scanner answerScanner = null;
         try {
             answerScanner = new Scanner(studentAnswerFile);
@@ -77,7 +69,11 @@ public class ExamTester {
 
         Exam exam1 = new Exam(examScanner);
 
+        // todo
         exam1.restoreStudentAnswers(answerScanner);
+
+
+
         int numQuestions = exam1.getNumberOfQuestions();
 
         // From here we store the information that should be in csv file into an ArrayList.
@@ -86,9 +82,6 @@ public class ExamTester {
         l.add(studentName);
         //l.add(studentUID);
         l.add(examName);
-
-
-
 
 
 
@@ -139,7 +132,5 @@ public class ExamTester {
         System.out.println("Created csv file: " + csvPath);
 
         // now print the contents.
-
-
     }
 }

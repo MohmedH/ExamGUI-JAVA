@@ -19,6 +19,10 @@ public class MCMAQuestion extends MCQuestion{
         this.answers = new ArrayList<MCAnswer>();
     }
 
+    public Answer getNewAnswer(String text, double creditIfSelected) {
+        return new MCMAAnswer(text, creditIfSelected);
+    }
+
 
     public void save(PrintWriter writer) {
         writer.write(text + "\n");
@@ -32,10 +36,10 @@ public class MCMAQuestion extends MCQuestion{
         writer.write("\n");
     }
 
+    public void restoreStudentAnswers(String s, Scanner scanner) {
+        //System.out.println("--MCMAuestion resotore answer");
 
-    public void restoreStudentAnswers(Scanner scanner) {
-        System.out.println("--MCMAuestion resotore answer");
-        int numOfAnswers = Integer.parseInt(scanner.nextLine());
+        int numOfAnswers = Integer.parseInt(s);
 
         double score = 0.0;
         String ansText = "";
@@ -46,7 +50,7 @@ public class MCMAQuestion extends MCQuestion{
                     score = ans.creditIfSelected;
                 }
             }
-            System.out.println(score + " " + ansText);
+            //System.out.println(score + " " + ansText);
             MCMAAnswer ans = new MCMAAnswer(ansText, score);
             ans.setSelected(true);
             studentAnswer.add(ans);
@@ -64,7 +68,7 @@ public class MCMAQuestion extends MCQuestion{
         }
     }
 
-
+/*
     public void getAnswerFromStudent() {
         System.out.println("(A ~ E)");
         Scanner userInput = ScannerFactory.getKeyboardScanner();
@@ -93,6 +97,40 @@ public class MCMAQuestion extends MCQuestion{
 
             System.out.print(choice + " ");
 
+            ans.setSelected(true);
+            studentAnswer.add(ans);
+        }
+        System.out.println("");
+    }
+*/
+
+    public void getAnswerFromStudent() {
+        System.out.println("(A ~ E) or 's' to skip");
+        Scanner userInput = ScannerFactory.getKeyboardScanner();
+        // get the user input integer
+        String userSelectedAnswers = userInput.nextLine();
+        String[] arr = userSelectedAnswers.split(" ");
+        MCAnswer ans = null;
+        System.out.print("-  You answered: ");
+        for ( String choice : arr) {
+            if (choice.equals("A")) {
+                ans = getAnswers().get(0);
+            } else if (choice.equals("B")) {
+                ans = getAnswers().get(1);
+            } else if (choice.equals("C")) {
+                ans = getAnswers().get(2);
+            } else if (choice.equals("D")) {
+                ans = getAnswers().get(3);
+            } else if (choice.equals("E")) {
+                ans = getAnswers().get(4);
+            } else if (choice.compareToIgnoreCase("s") == 0){
+                System.out.println("Skipped MCMA Question");
+                return;
+            } else {
+                System.out.println("Your answer is not on the answer list. Your input is wrong.");
+                return;
+            }
+            System.out.print(choice + " ");
             ans.setSelected(true);
             studentAnswer.add(ans);
         }
@@ -132,6 +170,7 @@ public class MCMAQuestion extends MCQuestion{
         }
         sum += baseCredit;
         sum = sum * maxValue;
+
 
         return sum;
     }

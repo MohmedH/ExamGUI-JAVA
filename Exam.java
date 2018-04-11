@@ -24,7 +24,6 @@ public class Exam {
 
     public Exam(Scanner scanner) {
         text = scanner.nextLine();
-        System.out.println(text);
         questions = new ArrayList<Question>();
         while(scanner.hasNext()) {
             Question q = _createQuestion(scanner);
@@ -50,12 +49,16 @@ public class Exam {
         return null;
     }
 
+    public void removeQuestion(int index){
+        questions.remove(index);
+    }
 
-    public void saveStudentAnswer(PrintWriter writer) {
-        Scanner userscan = ScannerFactory.getKeyboardScanner();
-        System.out.print("your name: ");
-        String username = userscan.nextLine();
-        writer.write(username + "\n\n");
+    public void saveStudentAnswer(PrintWriter writer, String f, String l, String eNam) {
+        //Scanner userscan = ScannerFactory.getKeyboardScanner();
+        //System.out.print("your name: ");
+        String username = f + " "+ l;
+        String examNam = eNam;
+        writer.write(username + "\n" + examNam + "\n\n");
         for (Question q : questions) {
             q.saveStudentAnswer(writer);
             writer.write("\n");
@@ -81,13 +84,44 @@ public class Exam {
 
 
     public void restoreStudentAnswers(Scanner scanner) {
-        scanner.nextLine();
+
         while(scanner.hasNext()) {
+            scanner.nextLine();
             for (Question q : questions) {
-                scanner.nextLine();
-                scanner.nextLine();
-                q.restoreStudentAnswers(scanner);
+                //System.out.println(scanner.nextLine());
+                //System.out.println(scanner.nextLine());
+                String examType = scanner.nextLine();
+                System.out.println("exam type: " + examType);
+                String ans;
+                if(examType.equals("MCMAAnswer")) {
+                    ans = scanner.nextLine();
+                    if(ans.equals("0")) {
+                        scanner.nextLine();
+                    }
+                }
+                if(examType.equals("SAAnswer") || examType.equals("MCSAAnswer")) {
+                    ans = scanner.nextLine();
+                    /*
+                    if(ans.equals("null")) {
+                        scanner.nextLine();
+                    }
+                    */
+                }
+                else {
+                    scanner.nextLine();
+                    ans = scanner.nextLine();
+                    System.out.println("ans : " + ans);
+                }
+
+
+
+                /*
+                if (scanner.nextLine().equals('0') || scanner.nextLine().equals("null")){
+                }
+                */
+                q.restoreStudentAnswers(ans, scanner);
             }
+
         }
     }
 
