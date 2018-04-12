@@ -10,18 +10,18 @@ public class NumQuestion extends Question{
 		this.tolerance = tolerance;
 	}
 	
-	public NumQuestion(Scanner scan){ //done 
-		 maxValue = Double.parseDouble(scanner.nextLine());
+	public NumQuestion(Scanner scan){ //done
+		maxValue = Double.parseDouble(scan.nextLine());
         //System.out.println(maxValue);
-        text = scanner.nextLine();
+        text = scan.nextLine();
         //System.out.println(text);
-        rightAnswer = new NumAnswer(scanner);
+        rightAnswer = new NumAnswer(scan);
         
-        tolerance = scanner.nextDouble();
+        tolerance = scan.nextDouble();
 	}
 	
 	public Answer getNewAnswer(){ //done
-		return new NumAnswer();
+		return null;
 
 	}
 	

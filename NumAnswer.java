@@ -9,7 +9,7 @@ public class NumAnswer extends Answer{
 	}
 	
 	public NumAnswer(Scanner scan){ //done
-		answer = scanner.nextInt();
+		answer = scan.nextInt();
 		
 	}
 	
@@ -19,7 +19,7 @@ public class NumAnswer extends Answer{
 	
 	public double getCredit(Answer rightAnswer){ //done
 		double range = Math.abs(((NumAnswer) rightAnswer).answer - answer);
-		if (range <= tolerance) {
+		if (range <= 3) {
             return 1;
         }
         return 0.0;

@@ -101,12 +101,12 @@ public class ExamBuilder{
 					case "NumQ":
 						
 						System.out.println("What is the right answer: ");
-						double rightAnswer = Double.parseDouble(input.nextLine());
+						double realAnswer = Double.parseDouble(input.nextLine());
 						System.out.println("What is the tolerance: ");
 						double tol = Double.parseDouble(input.nextLine());
-						NumAnswer NUMA = new NumAnswer( rightAnswer);
+						NumAnswer NUMA = new NumAnswer( realAnswer);
 						NumQuestion NUMQ = new NumQuestion(Text, Val, tol);
-						NUMA.setRightAnswer(NUMA);
+						NUMQ.setRightAnswer(NUMA);
 						test.addQuestion(NUMQ);
 					default:
 						
