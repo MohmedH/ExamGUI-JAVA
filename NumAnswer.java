@@ -9,7 +9,7 @@ public class NumAnswer extends Answer{
 	}
 	
 	public NumAnswer(Scanner scan){ //done
-		answer = scan.nextInt();
+		answer = Double.parseDouble(scan.nextLine());
 		
 	}
 	

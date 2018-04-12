@@ -40,8 +40,9 @@ public class ExamGrader {
             answerScanner = new Scanner(studentAnswerFile);
         }
         catch(FileNotFoundException e) {
+            System.out.println("================ error =================");
             System.out.println("You input the wrong file name!!!!!!!!");
-            System.out.println("Please input the right file name next time :-) ");
+            System.out.println("Please input the right file name next time :-)\n");
             return;
         }
 
@@ -51,15 +52,22 @@ public class ExamGrader {
         studentName = answerScanner.nextLine();
         examName = answerScanner.nextLine();
 
-        System.out.println("Exam Name in the student answer file: " + examName);
-        System.out.print("Type exam name to confirm: ");
-
+        System.out.println("Is this exam right? ->" + examName);
+        System.out.print("Please confirm. (y/n) ->");
         String inputExamName = scanner.next();
+        System.out.println("");
 
-        if(!inputExamName.equals(examName)) {
-            System.out.println("Your input exam name is different than the exam name in the answer text file. Please re try.");
-            System.out.println("Exiting the program... ");
+        if(inputExamName.equals("n")) {
+            System.out.println("You hit 'n'");
+            System.out.println("Exiting the program ...");
             return;
+        }
+        else if(inputExamName.equals("y")) {
+            System.out.println("You confirmed the Exam Name");
+        }
+        else {
+            System.out.println("You hit the wrong command.");
+            System.out.println("Exiting the program ...");
         }
 
         String examPath = String.format("./src/%s.txt", examName);
@@ -76,6 +84,7 @@ public class ExamGrader {
         }
 
         Exam exam1 = new Exam(examScanner);
+        exam1.print();
         exam1.restoreStudentAnswers(answerScanner);
         int numQuestions = exam1.getNumberOfQuestions();
 
@@ -97,7 +106,7 @@ public class ExamGrader {
 
         for (int i=0; i<numQuestions; i++) {
             score = exam1.getQuestion(i).getValue();
-            System.out.println("Question: " + exam1.getQuestion(i).text);
+            //System.out.println("Question: " + exam1.getQuestion(i).text);
             scoreString = new DecimalFormat("#0.0").format(score);
             System.out.println("Q"+ (i+1) + ": " + scoreString);
             l.add(scoreString);

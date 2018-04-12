@@ -11,13 +11,20 @@ public class NumQuestion extends Question{
 	}
 	
 	public NumQuestion(Scanner scan){ //done
+
 		maxValue = Double.parseDouble(scan.nextLine());
-        //System.out.println(maxValue);
         text = scan.nextLine();
-        //System.out.println(text);
         rightAnswer = new NumAnswer(scan);
-        
-        tolerance = scan.nextDouble();
+        tolerance = Double.parseDouble(scan.nextLine());
+
+
+	}
+
+	public void restoreStudentAnswers(String s, Scanner scanner) {
+		System.out.println("- "+ s);
+		double answer = Double.parseDouble(s);
+		NumAnswer ans = new NumAnswer(answer);
+		studentAnswer = ans;
 	}
 	
 	public Answer getNewAnswer(){ //done

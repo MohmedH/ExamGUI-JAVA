@@ -19,11 +19,6 @@ public class MCMAQuestion extends MCQuestion{
         this.answers = new ArrayList<MCAnswer>();
     }
 
-    public Answer getNewAnswer(String text, double creditIfSelected) {
-        return new MCMAAnswer(text, creditIfSelected);
-    }
-
-
     public void save(PrintWriter writer) {
         writer.write(text + "\n");
         // get the answer and print out.
@@ -37,15 +32,16 @@ public class MCMAQuestion extends MCQuestion{
     }
 
     public void restoreStudentAnswers(String s, Scanner scanner) {
-        System.out.println("--MCMAuestion resotore answer");
 
         int numOfAnswers = Integer.parseInt(s);
 
         double score = 0.0;
         String ansText = "";
+        System.out.println("STUDENT MULTIPLE ANSWERS: ");
         for(int i=0; i < numOfAnswers; i++) {
-            System.out.println("folopp");
             ansText = scanner.nextLine();
+
+            System.out.println("- "+ ansText);
             for(MCAnswer ans: answers) {
                 if(ans.text.equals(ansText)){
                     score = ans.creditIfSelected;
@@ -59,7 +55,7 @@ public class MCMAQuestion extends MCQuestion{
     }
 
 
-    public void saveStudentAnswer(PrintWriter writer) {
+    public void saveStudentAnswers(PrintWriter writer) {
         writer.write("MCMAAnswer\n");
         writer.write(Integer.toString(studentAnswer.size()) + "\n");
         for (Answer ans: studentAnswer) {
@@ -95,7 +91,6 @@ public class MCMAQuestion extends MCQuestion{
                 System.out.println("Your answer is not on the answer list. Your input is wrong.");
                 return;
             }
-
             System.out.print(choice + " ");
 
             ans.setSelected(true);
@@ -161,25 +156,21 @@ public class MCMAQuestion extends MCQuestion{
 
     public double getValue(){
         //ArrayList<MCAnswer> answers = getAnswers();
-        System.out.println("MCMAQesution get value");
+        //System.out.println("MCMAQesution get value");
         double sum = 0.0;
         for (Answer ans: studentAnswer) {
-            System.out.println("for loop");
+          //  System.out.println("for loop");
             if (ans instanceof MCMAAnswer){
                 if(((MCMAAnswer) ans).selected) {
-                    System.out.print("Selected answer: ");
-                    System.out.println(((MCMAAnswer) ans).text);
+            //        System.out.print("Selected answer: ");
+                    //System.out.println(((MCMAAnswer) ans).text);
                     sum += ((MCMAAnswer) ans).getCreditIfSelected();
                 }
             }
         }
-        System.out.println(sum);
-        System.out.println(baseCredit);
-        System.out.println(maxValue);
+
         sum += baseCredit;
         sum = sum * maxValue;
-
-        System.out.println(sum);
 
         return sum;
     }

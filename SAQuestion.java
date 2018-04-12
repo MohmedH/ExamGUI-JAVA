@@ -46,12 +46,9 @@ public class SAQuestion extends Question{
     }
 
     public void restoreStudentAnswers(String s, Scanner scanner) {
-
-        String answer = scanner.nextLine();
-
         //System.out.println("--SAAnswer restore answer:");
-        //System.out.println(answer);
-        studentAnswer = new SAAnswer(answer);
+        System.out.println("- "+ s);
+        studentAnswer = new SAAnswer(s);
 
     }
 /*

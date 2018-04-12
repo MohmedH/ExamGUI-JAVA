@@ -51,7 +51,7 @@ public abstract class Question {
 
     abstract public Answer getNewAnswer();
 
-    public void saveStudentAnswer(PrintWriter writer){}
+    public void saveStudentAnswers(PrintWriter writer){}
 
     abstract public void getAnswerFromStudent();
 

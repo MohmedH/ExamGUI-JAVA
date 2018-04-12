@@ -40,7 +40,7 @@ public class MCSAQuestion extends MCQuestion{
         rightAnswer = answer;
     }
 
-    public void saveStudentAnswer(PrintWriter writer) {
+    public void saveStudentAnswers(PrintWriter writer) {
         writer.write("MCSAAnswer\n");
         if(studentAnswer instanceof MCSAAnswer) {
             writer.write(((MCSAAnswer) studentAnswer).text + "\n");
@@ -64,16 +64,16 @@ public class MCSAQuestion extends MCQuestion{
     }
 
     public void restoreStudentAnswers(String s, Scanner scanner) {
+        System.out.println("- "+ s);
         //System.out.println("-- MCSAQuestion resotore answer");
-        String ansText = scanner.nextLine();
         double score = 0.0;
         for(MCAnswer ans: answers) {
-            if(ans.text.equals(ansText)){
+            if(ans.text.equals(s)){
                 score = ans.creditIfSelected;
             }
         }
         //System.out.println(score + " " + ansText);
-        MCSAAnswer ans = new MCSAAnswer(ansText, score);
+        MCSAAnswer ans = new MCSAAnswer(s, score);
         ans.setSelected(true);
         setStudentAnswer(ans);
 

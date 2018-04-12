@@ -73,7 +73,7 @@ public class ExamTaker {
             e.printStackTrace();
         }
 
-        exam1.saveStudentAnswer(answer_writer, name, lastName, eName);
+        exam1.saveStudentAnswers(answer_writer, name, lastName, eName);
         answer_writer.close();
 
         File ans = new File(lastName+"_answer.txt");
@@ -117,7 +117,7 @@ public class ExamTaker {
                         System.out.println("Ok, go ahead and enter in your answer, if you would like to skip again press 's'");
                         exam1.getAnswerFromStudent(prob1);
                         PrintWriter fin = new PrintWriter(lastName+"_answer.txt");
-                        exam1.saveStudentAnswer(fin, name, lastName,eName);
+                        exam1.saveStudentAnswers(fin, name, lastName,eName);
                         i = 1;
                     }else{
                         skipSA = "y";
@@ -150,7 +150,7 @@ public class ExamTaker {
                         j = 1;
                         exam1.getAnswerFromStudent(prob2);
                         PrintWriter fin = new PrintWriter(lastName+"_answer.txt");
-                        exam1.saveStudentAnswer(fin, name, lastName,eName);
+                        exam1.saveStudentAnswers(fin, name, lastName,eName);
 
                     }else{
                         skipMCSA = "y";
@@ -183,7 +183,7 @@ public class ExamTaker {
                         System.out.println("Ok, go ahead and enter in your answer, if you would like to skip again press 's' ");
                         exam1.getAnswerFromStudent(prob3);
                         PrintWriter fin = new PrintWriter(lastName+"_answer.txt");
-                        exam1.saveStudentAnswer(fin, name, lastName,eName);
+                        exam1.saveStudentAnswers(fin, name, lastName,eName);
                         k = 1;
                     }else{
                         skipMCMA = "y";
@@ -233,7 +233,7 @@ public class ExamTaker {
             exam1.getAnswerFromStudent(qNum);
 
             PrintWriter fin = new PrintWriter("./src/"+ lastName+"_answer.txt");
-            exam1.saveStudentAnswer(fin, name, lastName,eName);
+            exam1.saveStudentAnswers(fin, name, lastName,eName);
 
             System.out.println("Ok, got it, now would you like to change any more? 'y' for yes and 'n' for no: ");
             cont = user_input.next();

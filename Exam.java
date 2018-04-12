@@ -46,21 +46,21 @@ public class Exam {
         if (tok.equals("MCSAQuestion")) {
             return new MCSAQuestion(scanner);
         }
+        if (tok.equals("NumQuestion")){
+            return new NumQuestion(scanner);
+        }
+
         return null;
     }
 
-    public void removeQuestion(int index){
-        questions.remove(index);
-    }
-
-    public void saveStudentAnswer(PrintWriter writer, String f, String l, String eNam) {
+    public void saveStudentAnswers(PrintWriter writer, String f, String l, String eNam) {
         //Scanner userscan = ScannerFactory.getKeyboardScanner();
         //System.out.print("your name: ");
         String username = f + " "+ l;
         String examNam = eNam;
         writer.write(username + "\n" + examNam + "\n\n");
         for (Question q : questions) {
-            q.saveStudentAnswer(writer);
+            q.saveStudentAnswers(writer);
             writer.write("\n");
         }
         writer.flush();
@@ -84,17 +84,23 @@ public class Exam {
 
 
     public void restoreStudentAnswers(Scanner scanner) {
+        System.out.println("RESTORING STUDENT ANSWER . . . . . ");
+        scanner.nextLine();
         while(scanner.hasNext()) {
-            scanner.nextLine();
             for (Question q : questions) {
                 String examType = scanner.nextLine(); // Exam type.
-                //System.out.println("exam type: " + examType);
+                System.out.println("Q TYPE: " + examType);
                 String ans = scanner.nextLine();
-                if(ans.equals("0") || ans.equals("null")){
-                    scanner.nextLine();
+                if((ans.equals("0")&& examType.equals("MCMAAnswer")) || ans.equals("null")){
+                    System.out.println("- Student skipped this question.");
+                    if (scanner.hasNext())
+                        scanner.nextLine();
                 }
                 else {
+                    //System.out.println("- Student Answered:  " + ans);
                     q.restoreStudentAnswers(ans, scanner);
+                    if (scanner.hasNext())
+                        scanner.nextLine();
                 }
 
 
