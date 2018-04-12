@@ -118,7 +118,7 @@ public class ExamGrader {
         System.out.println("  EXAMGRADER HW DESCRIPTION");
         System.out.println("  3. Store the results to a CSV ( comma separated values )");
         System.out.println("===================================================\n");
-
+        System.out.println("CREATING CSV FILE . . . . ");
         PrintWriter writer = null;
         studentName = studentName.replaceAll("\\s+","");
         studentName = studentName.toLowerCase();
