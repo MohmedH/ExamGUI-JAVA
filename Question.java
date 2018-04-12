@@ -44,8 +44,10 @@ public abstract class Question {
     }
 
     public void setRightAnswer(Answer ans) {
+
         rightAnswer = ans;
     }
+
 
     abstract public Answer getNewAnswer();
 
