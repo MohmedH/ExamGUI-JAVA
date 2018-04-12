@@ -5,6 +5,7 @@
  */
 
 import java.io.PrintWriter;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -56,9 +57,11 @@ public class Exam {
     public void saveStudentAnswers(PrintWriter writer, String f, String l, String eNam) {
         //Scanner userscan = ScannerFactory.getKeyboardScanner();
         //System.out.print("your name: ");
+        Instant timestamp = Instant.now();
+        timestamp.toString();
         String username = f + " "+ l;
         String examNam = eNam;
-        writer.write(username + "\n" + examNam + "\n\n");
+        writer.write(username + "\n" + examNam + "\n" + timestamp + "\n\n");
         for (Question q : questions) {
             q.saveStudentAnswers(writer);
             writer.write("\n");
@@ -86,12 +89,13 @@ public class Exam {
     public void restoreStudentAnswers(Scanner scanner) {
         System.out.println("RESTORING STUDENT ANSWER . . . . . ");
         scanner.nextLine();
+        scanner.nextLine();
         while(scanner.hasNext()) {
             for (Question q : questions) {
                 String examType = scanner.nextLine(); // Exam type.
                 System.out.println("Q TYPE: " + examType);
                 String ans = scanner.nextLine();
-                if((ans.equals("0")&& examType.equals("MCMAAnswer")) || ans.equals("null")){
+                if((ans.equals("0")&& examType.equals("MCMAAnswer")) || ans.equals("null") || ans.equals("0.0")){
                     System.out.println("- Student skipped this question.");
                     if (scanner.hasNext())
                         scanner.nextLine();

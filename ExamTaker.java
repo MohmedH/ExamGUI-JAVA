@@ -74,46 +74,78 @@ public class ExamTaker {
         }
 
         exam1.saveStudentAnswers(answer_writer, name, lastName, eName);
+
         answer_writer.close();
+
 
         File ans = new File(lastName+"_answer.txt");
         //FINISH SAVING STUDENT ANSWERS TO FILE stored_answerHW4.txt ----------------------------------
 
 
         //MY SOLUTION TO GETTING THE ANSWERS THAT WERE SKIPPED/Ask if they want to keep answers blank
+
+
         Scanner s = new Scanner(ans);
 
-        int i = 1, j = 1, k = 1;
+
+
+
+
+        int i = 1, j = 1, k = 1, l = 1;
         int loopCounter = 0;
-        String skipSA = "n", skipMCSA = "n", skipMCMA = "n";
+        String skipSA = "n", skipMCSA = "n", skipMCMA = "n", skipNumA = "n";
         int questionNumb = 1;
         int counter = 1;
-        int prob1 = 0, prob2 = 0, prob3 = 0;
+        int prob1 = 0, prob2 = 0, prob3 = 0, prob4 = 0;
         int tes = exam1.getNumberOfQuestions();
+        int check1 = 0;
+        int check2 = 0;
+        int check3 = 0;
+        int check4 = 0;
+        while(s.hasNextLine()){
+            String line = s.nextLine();
+            if(line.equalsIgnoreCase("SAAnswer")){
+                i = 1;
+                check1 = 1;
+            }
+            if(check1 == 0){
+                i = 0;
+            }
+            if(line.equalsIgnoreCase("MCMAAnswer")){
+                k = 1;
+            }
+            if (check2 == 0){
+                k = 0;
+            }
+            if(line.equalsIgnoreCase("MCSAAnswer")){
+                j = 1;
+            }
+            if (check3 == 0){
+                j = 0;
+            }
+            if(line.equalsIgnoreCase("NumAnswer")){
+                l = 1;
+                check4 = 1;
+            }
+            if (check4 == 0){
+                l = 0;
+            }
+        }
+        s.close();
+        s = new Scanner(ans);
+
         while(loopCounter == 0 )
         {
             String line = s.nextLine();
-
-
-            //System.out.println(j);
-
             if(line.equalsIgnoreCase("SAAnswer") ) {
-
-                //  System.out.println(line);
                 if(counter <= tes)
                     prob1 = counter;
-
                 counter++;
-
-                if(s.nextLine().equals("") && skipSA.compareToIgnoreCase("n") == 0) {
-
-
+                if(s.nextLine().equals("null") && skipSA.compareToIgnoreCase("n") == 0) {
                     System.out.println("HEY it looks like you didnt put an answer for SA question");
                     System.out.println("Would you like to leave this question blank? 'y' for Yes, 'n' for No");
                     skipSA = user_input.next();
-
                     if(skipSA.compareToIgnoreCase("n") == 0) {
-
                         System.out.println("Ok, go ahead and enter in your answer, if you would like to skip again press 's'");
                         exam1.getAnswerFromStudent(prob1);
                         PrintWriter fin = new PrintWriter(lastName+"_answer.txt");
@@ -121,64 +153,44 @@ public class ExamTaker {
                         i = 1;
                     }else{
                         skipSA = "y";
-
                     }
-
                 }else{
                     i = 0;
                 }
-
-
             }
             if(line.equalsIgnoreCase("MCSAAnswer") && skipMCSA.compareToIgnoreCase("n") == 0) {
-
                 // System.out.println(line);
                 if(counter <= tes)
                     prob2 = counter;
-
                 counter++;
-
-                if(s.nextLine().equals("") && skipMCSA.compareToIgnoreCase("n") == 0 ) {
-
+                if(s.nextLine().equals("null") && skipMCSA.compareToIgnoreCase("n") == 0 ) {
                     System.out.println("HEY it looks like you didnt put an answer for MCSA Question");
                     System.out.println("Would you like to leave this question blank? 'y' for Yes, 'n' for No");
                     skipMCSA = user_input.next();
-
                     if(skipMCSA.compareToIgnoreCase("n") == 0) {
-
                         System.out.println("Ok, go ahead and enter in your answer, if you would like to skip again press 's' ");
                         j = 1;
                         exam1.getAnswerFromStudent(prob2);
                         PrintWriter fin = new PrintWriter(lastName+"_answer.txt");
                         exam1.saveStudentAnswers(fin, name, lastName,eName);
-
                     }else{
                         skipMCSA = "y";
                         j = 0;
                     }
-
-
                 }else{
                     j = 0;
                 }
-
             }
             if(line.equalsIgnoreCase("MCMAAnswer")) {
-
                 // System.out.println(line);
                 int number = s.nextInt();
-
                 if(counter <= tes)
                     prob3 = counter;
-
                 counter++;
-
                 if(number == 0 && skipMCMA.compareToIgnoreCase("n") == 0 ) {
-
                     System.out.println("HEY it look like you didnt put an answer for MCMA");
                     System.out.println("Would you like to leave this question blank? 'y' for Yes, 'n' for No");
                     skipMCMA = user_input.next();
-
                     if(skipMCMA.compareToIgnoreCase("n") == 0) {
                         System.out.println("Ok, go ahead and enter in your answer, if you would like to skip again press 's' ");
                         exam1.getAnswerFromStudent(prob3);
@@ -188,25 +200,42 @@ public class ExamTaker {
                     }else{
                         skipMCMA = "y";
                     }
-
                 }else{
                     k = 0;
                 }
-
             }
-
-
-            if((i == 0) && (j == 0) && (k == 0)){
+            if(line.equalsIgnoreCase("NumAnswer")) {
+                // System.out.println(line);
+                //int number = s.nextInt();
+                double ce = s.nextDouble();
+                if(counter <= tes)
+                    prob4 = counter;
+                counter++;
+                if(ce == 0.0 && skipNumA.compareToIgnoreCase("n") == 0 ) {
+                    System.out.println("HEY it look like you didnt put an answer for NumA");
+                    System.out.println("Would you like to leave this question blank? 'y' for Yes, 'n' for No");
+                    skipNumA = user_input.next();
+                    if(skipMCMA.compareToIgnoreCase("n") == 0) {
+                        System.out.println("Ok, go ahead and enter in your answer, if you would like to skip again press 's' ");
+                        exam1.getAnswerFromStudent(prob4);
+                        PrintWriter fin = new PrintWriter(lastName+"_answer.txt");
+                        exam1.saveStudentAnswers(fin, name, lastName,eName);
+                        l = 1;
+                    }else{
+                        skipMCMA = "y";
+                    }
+                }else{
+                    l = 0;
+                }
+            }
+            if((i == 0) && (j == 0) && (k == 0) && (l == 0)){
                 loopCounter = 1;
             }
-
             if(!s.hasNextLine()){
-
                 s.close();
                 s = new Scanner(ans);
                 counter = 1;
             }
-
         }
 
 

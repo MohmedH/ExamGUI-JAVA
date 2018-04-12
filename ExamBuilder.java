@@ -25,11 +25,22 @@ public class ExamBuilder{
 			if(choice == 1){
 					
 				System.out.println("Enter the name of the file that you would like to Load: ");
+				System.out.println("ex) stored_exam.txt");
+				System.out.print("-> ");
+				System.out.println("");
 				try{
+
 					File file = new File(input.nextLine().trim());
 					test = new Exam(new Scanner(file));
 				}
-				catch(Exception e){}
+				catch(Exception e){
+					System.out.println("================ error =================");
+					System.out.println("The file does not exists!");
+					System.out.println("Please type the right file name next time! :)");
+					return;
+				}
+
+				System.out.println("LOADING EXAM . . . .");
 			}
 			
 			else if(choice == 2){
@@ -123,7 +134,7 @@ public class ExamBuilder{
 					System.out.println("The exam does not exist");
 				}
 				else{
-					System.out.println("What question would you like to remove?");
+					System.out.println("What question number would you like to remove? ( 1 ~ endOfQuesion): ");
 					int index= Integer.parseInt(input.nextLine());
 					test.removeQuestion(index-1);
 				}
@@ -154,13 +165,23 @@ public class ExamBuilder{
 			}
 			else if(choice == 6){
 
-				System.out.println("Enter the name of the file to save the Exam: ");
+				System.out.println("Save as: ");
+				System.out.println("ex) stored_exam.txt");
+				System.out.print("-> ");
+				System.out.println("");
+				String fileName;
 				try{
-					File File=new File(input.nextLine().trim());
+					fileName = input.nextLine().trim();
+					File File=new File(fileName);
 					PrintWriter pw=new PrintWriter(File);
 					test.save(pw);
 				}
-				catch(Exception e){}
+				catch(Exception e){
+					System.out.println("================ error =================");
+
+					return;
+				}
+				System.out.println("SAVING FILE " + fileName + ". . . .");
 			}
 			
 			else if(choice == 7){

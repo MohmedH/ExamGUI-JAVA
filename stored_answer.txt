@@ -1,17 +1,16 @@
-Seho
-Java Exam
-
-SAAnswer
-Information Hiding
-
-MCSAAnswer
-Peanut butter and jelly
+A B
+stored_exam
+2018-04-12T22:26:28.747Z
 
 MCMAAnswer
 1
 Tom Riddle
 
+SAAnswer
+A
 
+MCSAAnswer
+Onions
 
-
-
+NumAnswer
+40.0

@@ -2,14 +2,13 @@ seho lim
 stored_exam
 
 MCMAAnswer
-1
-Tom Riddle
+0
 
 SAAnswer
-Information Hiding
+null
 
 MCSAAnswer
-Peanut butter and jelly
+null
 
 NumAnswer
-42.07
+null

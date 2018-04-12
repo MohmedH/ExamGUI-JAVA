@@ -3,9 +3,14 @@ import java.util.Scanner;
 
 public class NumAnswer extends Answer{
 	
-	private double answer;
+	protected double answer;
+	protected String op;
 	public NumAnswer(double answer){ //done
 		this.answer = answer;
+		this.op = null;
+	}
+	public NumAnswer(String s) {
+		op = s;
 	}
 	
 	public NumAnswer(Scanner scan){ //done

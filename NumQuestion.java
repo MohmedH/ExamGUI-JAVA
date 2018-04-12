@@ -20,6 +20,13 @@ public class NumQuestion extends Question{
 
 	}
 
+	public void saveStudentAnswers(PrintWriter writer) {
+		writer.write("NumAnswer\n");
+		if(studentAnswer instanceof NumAnswer) {
+			writer.write(((NumAnswer) studentAnswer).answer + "\n");
+		}
+	}
+
 	public void restoreStudentAnswers(String s, Scanner scanner) {
 		System.out.println("- "+ s);
 		double answer = Double.parseDouble(s);
@@ -35,19 +42,32 @@ public class NumQuestion extends Question{
 	public void getAnswerFromStudent(){ // done
 		System.out.print("Num Answer: ");
         Scanner userInput = ScannerFactory.getKeyboardScanner();
+		String ans = userInput.nextLine();
+        if(ans.equals("s"))
+		{
+			System.out.println("Skipped NumQuestion");
+			NumAnswer answer = new NumAnswer("null");
+			setStudentAnswer(answer);
+			return;
+		}
+		else {
+			// get the user input integer
+			double userSelectedAnswer = Double.parseDouble(ans);
+			System.out.println("-    You answered: "+ userSelectedAnswer + ".");
+			// do the standard input and then save it as
+			// studentAnswer.
+			NumAnswer studentAnswer = new NumAnswer(userSelectedAnswer);
+			setStudentAnswer(studentAnswer);
 
-        // get the user input integer
-        double userSelectedAnswer = userInput.nextDouble();
+		}
 
-        System.out.println("-    You answered: "+ userSelectedAnswer + ".");
-        // do the standard input and then save it as
-        // studentAnswer.
-        NumAnswer studentAnswer = new NumAnswer(userSelectedAnswer);
-        setStudentAnswer(studentAnswer);
 	}
 	
 	public double getValue(){ // done
 		Answer rightAnswer = getRightAnswer();
+		if(getStudentAnswer() == null) {
+			return 0.0;
+		}
         if (getStudentAnswer().getCredit(rightAnswer) > 0) {
             return getMaxValue();
         }

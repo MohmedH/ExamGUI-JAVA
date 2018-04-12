@@ -38,7 +38,7 @@ public class SAQuestion extends Question{
         return new SAAnswer(text);
     }
 
-    public void saveStudentAnswer(PrintWriter writer) {
+    public void saveStudentAnswers(PrintWriter writer) {
         writer.write("SAAnswer\n");
         if(studentAnswer instanceof SAAnswer) {
             writer.write(((SAAnswer) studentAnswer).text + "\n");
