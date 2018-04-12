@@ -40,7 +40,7 @@ public class NumQuestion extends Question{
 	}
 	
 	public void getAnswerFromStudent(){ // done
-		System.out.print("Num Answer: ");
+		System.out.print("Num Answer: or press 's' to skip");
         Scanner userInput = ScannerFactory.getKeyboardScanner();
 		String ans = userInput.nextLine();
         if(ans.equals("s"))
