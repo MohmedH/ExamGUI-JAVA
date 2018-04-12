@@ -135,4 +135,7 @@ public class MCMAQuestion extends MCQuestion{
 
         return sum;
     }
+    public Answer getNewAnswer(String text, double creditIfSelected) {
+        return new MCMAAnswer(text, creditIfSelected);
+    }
 }

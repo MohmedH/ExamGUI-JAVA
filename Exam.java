@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Exam {
-    private String text; // name of the exam.
+    public String text; // name of the exam.
     private ArrayList<Question> questions; // questions array list.
     private int N; // this is number of questions.
 
@@ -185,7 +185,9 @@ public class Exam {
         }
         return questions.get(i); // returns the ith question instance.
     }
-
+	public void removeQuestion(int index){
+		questions.remove(index);
+	}
 
     /** returns the number of the questions */
     public int getNumberOfQuestions() {
