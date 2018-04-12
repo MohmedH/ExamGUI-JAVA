@@ -34,7 +34,7 @@ public abstract class Question {
         text = scanner.next();
     }
 
-    public void restoreStudentAnswers(Scanner scanner) {}
+    public void restoreStudentAnswers(String s, Scanner scanner) {}
 
     abstract public void save(PrintWriter writer);
 
@@ -44,8 +44,10 @@ public abstract class Question {
     }
 
     public void setRightAnswer(Answer ans) {
-		rightAnswer = ans;
-	}
+
+        rightAnswer = ans;
+    }
+
 
     abstract public Answer getNewAnswer();
 
