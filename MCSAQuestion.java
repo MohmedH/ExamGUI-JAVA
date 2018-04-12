@@ -63,8 +63,8 @@ public class MCSAQuestion extends MCQuestion{
 
     }
 
-    public void restoreStudentAnswers(Scanner scanner) {
-        System.out.println("-- MCSAQuestion resotore answer");
+    public void restoreStudentAnswers(String s, Scanner scanner) {
+        //System.out.println("-- MCSAQuestion resotore answer");
         String ansText = scanner.nextLine();
         double score = 0.0;
         for(MCAnswer ans: answers) {
@@ -72,7 +72,7 @@ public class MCSAQuestion extends MCQuestion{
                 score = ans.creditIfSelected;
             }
         }
-        System.out.println(score + " " + ansText);
+        //System.out.println(score + " " + ansText);
         MCSAAnswer ans = new MCSAAnswer(ansText, score);
         ans.setSelected(true);
         setStudentAnswer(ans);
@@ -85,15 +85,13 @@ public class MCSAQuestion extends MCQuestion{
 
     /** ask a student for an answer */
     public void getAnswerFromStudent() {
-        System.out.println("(A ~ E)");
+        System.out.println("(A ~ E) press 's' to skip this question");
         Scanner userInput = ScannerFactory.getKeyboardScanner();
-
         // get the user input integer
         String userSelectedAnswer = userInput.nextLine();
-
         System.out.println("-    You answered: "+ userSelectedAnswer + "");
         // do the standard input and then save it as studentAnswer.
-        MCAnswer ans;
+        MCAnswer ans = null;
         if (userSelectedAnswer.equals("A")) {
             ans = getAnswers().get(0);
         } else if (userSelectedAnswer.equals("B")) {
@@ -104,6 +102,12 @@ public class MCSAQuestion extends MCQuestion{
             ans = getAnswers().get(3);
         } else if (userSelectedAnswer.equals("E")) {
             ans = getAnswers().get(4);
+        } else if(userSelectedAnswer.compareToIgnoreCase("s") == 0) {
+            System.out.println("Skipped MCSA Question");
+            MCSAAnswer answer = new MCSAAnswer("null", 0);
+            answer.setSelected(true);
+            setStudentAnswer(answer);
+            return;
         } else {
             System.out.println("Your answer is not on the answer list. Your input is wrong.");
             return;

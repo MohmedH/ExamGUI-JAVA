@@ -45,14 +45,16 @@ public class SAQuestion extends Question{
         }
     }
 
-    public void restoreStudentAnswers(Scanner scanner) {
+    public void restoreStudentAnswers(String s, Scanner scanner) {
+
         String answer = scanner.nextLine();
-        System.out.println("--SAAnswer restore answer:");
-        System.out.println(answer);
+
+        //System.out.println("--SAAnswer restore answer:");
+        //System.out.println(answer);
         studentAnswer = new SAAnswer(answer);
 
     }
-
+/*
     public void getAnswerFromStudent() {
         System.out.print("short answer: ");
         Scanner userInput = ScannerFactory.getKeyboardScanner();
@@ -66,9 +68,35 @@ public class SAQuestion extends Question{
         SAAnswer studentAnswer = new SAAnswer(userSelectedAnswer);
         setStudentAnswer(studentAnswer);
     }
+*/
+    public void getAnswerFromStudent() {
+        System.out.print(" short answer (to skip press 's'): ");
+        Scanner userInput = ScannerFactory.getKeyboardScanner();
+        // get the user input integer
+        String userSelectedAnswer = userInput.nextLine();
+        if(userSelectedAnswer.compareToIgnoreCase("s") == 0){
+            System.out.println("Skipped SA Question");
+            SAAnswer studentAnswer = new SAAnswer("null");
+            setStudentAnswer(studentAnswer);
+            return;
+        }else {
+            System.out.println("-    You answered: " + userSelectedAnswer + ".");
+            // do the standard input and then save it as
+            // studentAnswer.
+            SAAnswer studentAnswer = new SAAnswer(userSelectedAnswer);
+            setStudentAnswer(studentAnswer);
+        }
+    }
 
     public double getValue() {
         Answer rightAnswer = getRightAnswer();
+        if (rightAnswer == null) {
+            return 0.0;
+        }
+        Answer studentAnswer = getStudentAnswer();
+        if (studentAnswer == null) {
+            return 0.0;
+        }
         if (getStudentAnswer().getCredit(rightAnswer) > 0) {
             return getMaxValue();
         }

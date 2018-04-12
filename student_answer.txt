@@ -1,4 +1,5 @@
-Ima Student
+Seho Lim
+exam
 
 SAAnswer
 Encapsulation
@@ -11,6 +12,3 @@ MCMAAnswer
 Harry Potter
 Rubeus Hagrid
 Bilbo Baggins
-
-NumAnswer
-42.0
