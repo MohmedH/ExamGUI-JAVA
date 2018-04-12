@@ -84,42 +84,37 @@ public class Exam {
 
 
     public void restoreStudentAnswers(Scanner scanner) {
-
         while(scanner.hasNext()) {
             scanner.nextLine();
             for (Question q : questions) {
-                //System.out.println(scanner.nextLine());
-                //System.out.println(scanner.nextLine());
-                String examType = scanner.nextLine();
-                System.out.println("exam type: " + examType);
-                String ans;
-                if(examType.equals("MCMAAnswer")) {
-                    ans = scanner.nextLine();
-                    if(ans.equals("0")) {
-                        scanner.nextLine();
-                    }
+                String examType = scanner.nextLine(); // Exam type.
+                //System.out.println("exam type: " + examType);
+                String ans = scanner.nextLine();
+                if(ans.equals("0") || ans.equals("null")){
+                    scanner.nextLine();
                 }
-                if(examType.equals("SAAnswer") || examType.equals("MCSAAnswer")) {
+                else {
+                    q.restoreStudentAnswers(ans, scanner);
+                }
+
+
+                /*
+                if(examType.equals("SAAnswer") || examType.equals("MCSAAnswer") || examType.equals("MCMAAnswer")) {
                     ans = scanner.nextLine();
-                    /*
-                    if(ans.equals("null")) {
+                    //System.out.println("line105: " + ans);
+                    if(examType.equals("MCMAAnswer") && ans.equals(0)) {
                         scanner.nextLine();
                     }
-                    */
+
                 }
                 else {
                     scanner.nextLine();
                     ans = scanner.nextLine();
-                    System.out.println("ans : " + ans);
+                    System.out.println("line115: " + ans);
+
                 }
 
-
-
-                /*
-                if (scanner.nextLine().equals('0') || scanner.nextLine().equals("null")){
-                }
                 */
-                q.restoreStudentAnswers(ans, scanner);
             }
 
         }

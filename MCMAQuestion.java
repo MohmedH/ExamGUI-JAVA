@@ -37,13 +37,14 @@ public class MCMAQuestion extends MCQuestion{
     }
 
     public void restoreStudentAnswers(String s, Scanner scanner) {
-        //System.out.println("--MCMAuestion resotore answer");
+        System.out.println("--MCMAuestion resotore answer");
 
         int numOfAnswers = Integer.parseInt(s);
 
         double score = 0.0;
         String ansText = "";
         for(int i=0; i < numOfAnswers; i++) {
+            System.out.println("folopp");
             ansText = scanner.nextLine();
             for(MCAnswer ans: answers) {
                 if(ans.text.equals(ansText)){
@@ -160,17 +161,25 @@ public class MCMAQuestion extends MCQuestion{
 
     public double getValue(){
         //ArrayList<MCAnswer> answers = getAnswers();
+        System.out.println("MCMAQesution get value");
         double sum = 0.0;
         for (Answer ans: studentAnswer) {
+            System.out.println("for loop");
             if (ans instanceof MCMAAnswer){
                 if(((MCMAAnswer) ans).selected) {
+                    System.out.print("Selected answer: ");
+                    System.out.println(((MCMAAnswer) ans).text);
                     sum += ((MCMAAnswer) ans).getCreditIfSelected();
                 }
             }
         }
+        System.out.println(sum);
+        System.out.println(baseCredit);
+        System.out.println(maxValue);
         sum += baseCredit;
         sum = sum * maxValue;
 
+        System.out.println(sum);
 
         return sum;
     }

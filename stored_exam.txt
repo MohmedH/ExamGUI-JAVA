@@ -26,3 +26,8 @@ What do you put on a peanut butter and jelly sandwich?
 0.5 Peanut butter
 0.0 Horseradish
 
+NumQuestion
+5.0
+What is the area of a circle with a radius of 3.66?
+42.08
+0.1

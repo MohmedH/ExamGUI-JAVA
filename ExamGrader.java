@@ -24,16 +24,25 @@ public class ExamGrader {
         System.out.println("  exam name, and then compare both exam's name.");
         System.out.println("===================================================");
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please type answer file name. If you saved answer file in certain paths, inlcude path.");
+        System.out.print("-> (ex: Lim_answer.txt): ");
+        String answerName = scanner.next();
+        System.out.println("\n");
+        String answerFilePath = String.format("./src/%s", answerName);
 
 
-        File studentAnswerFile = new File("./src/Lim_answer.txt");
+        File studentAnswerFile = new File(answerFilePath);
+
+        System.out.println(String.format("Loading answer file: %s", answerName));
         Scanner answerScanner = null;
         try {
             answerScanner = new Scanner(studentAnswerFile);
         }
-        //catch the exception
         catch(FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("You input the wrong file name!!!!!!!!");
+            System.out.println("Please input the right file name next time :-) ");
+            return;
         }
 
 
@@ -44,7 +53,7 @@ public class ExamGrader {
 
         System.out.println("Exam Name in the student answer file: " + examName);
         System.out.print("Type exam name to confirm: ");
-        Scanner scanner = new Scanner(System.in);
+
         String inputExamName = scanner.next();
 
         if(!inputExamName.equals(examName)) {
@@ -66,14 +75,8 @@ public class ExamGrader {
             e.printStackTrace();
         }
 
-
         Exam exam1 = new Exam(examScanner);
-
-        // todo
         exam1.restoreStudentAnswers(answerScanner);
-
-
-
         int numQuestions = exam1.getNumberOfQuestions();
 
         // From here we store the information that should be in csv file into an ArrayList.
@@ -83,8 +86,6 @@ public class ExamGrader {
         //l.add(studentUID);
         l.add(examName);
 
-
-
         System.out.println("\n=================================================");
         System.out.println("  EXAMGRADER HW DESCRIPTION");
         System.out.println("  2. Evaluate the answers, and report the results to the screen.");
@@ -93,22 +94,21 @@ public class ExamGrader {
         System.out.println("**** Score Report ****");
         double score;
         String scoreString;
+
         for (int i=0; i<numQuestions; i++) {
             score = exam1.getQuestion(i).getValue();
+            System.out.println("Question: " + exam1.getQuestion(i).text);
             scoreString = new DecimalFormat("#0.0").format(score);
-            System.out.println("Q"+ i + ": " + scoreString);
+            System.out.println("Q"+ (i+1) + ": " + scoreString);
             l.add(scoreString);
         }
         System.out.println("Total Score: " + new DecimalFormat("#0.0").format(exam1.getValue()) + "\n");
         l.add(Double.toString(exam1.getValue()));
 
-
-
         System.out.println("\n=================================================");
         System.out.println("  EXAMGRADER HW DESCRIPTION");
         System.out.println("  3. Store the results to a CSV ( comma separated values )");
         System.out.println("===================================================\n");
-
 
         PrintWriter writer = null;
         studentName = studentName.replaceAll("\\s+","");

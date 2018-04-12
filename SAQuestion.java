@@ -90,6 +90,13 @@ public class SAQuestion extends Question{
 
     public double getValue() {
         Answer rightAnswer = getRightAnswer();
+        if (rightAnswer == null) {
+            return 0.0;
+        }
+        Answer studentAnswer = getStudentAnswer();
+        if (studentAnswer == null) {
+            return 0.0;
+        }
         if (getStudentAnswer().getCredit(rightAnswer) > 0) {
             return getMaxValue();
         }
