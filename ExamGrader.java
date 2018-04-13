@@ -6,6 +6,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Team31
+// Seho Lim
+
 public class ExamGrader {
     public static void main(String[] args){
         // Get the files from here.
@@ -29,7 +32,7 @@ public class ExamGrader {
         System.out.print("-> (ex: Lim_answer.txt): ");
         String answerName = scanner.next();
         System.out.println("\n");
-        String answerFilePath = String.format("./src/%s", answerName);
+        String answerFilePath = String.format("%s", answerName);
 
 
         File studentAnswerFile = new File(answerFilePath);
@@ -70,7 +73,7 @@ public class ExamGrader {
             System.out.println("Exiting the program ...");
         }
 
-        String examPath = String.format("./src/%s.txt", examName);
+        String examPath = String.format("%s.txt", examName);
 
         System.out.println("Loading exam: " + examPath);
         File examFile = new File(examPath);
@@ -122,7 +125,7 @@ public class ExamGrader {
         PrintWriter writer = null;
         studentName = studentName.replaceAll("\\s+","");
         studentName = studentName.toLowerCase();
-        String csvPath = String.format("./src/%s_results.csv", studentName);
+        String csvPath = String.format("%s_results.csv", studentName);
         try {
             writer = new PrintWriter(csvPath, "UTF-8");
         } catch (FileNotFoundException e) {

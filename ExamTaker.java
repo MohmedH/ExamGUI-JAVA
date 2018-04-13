@@ -7,6 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.*;
 import java.util.*;
 
+// Team31
+// created by: Mohamad Hira
+
 public class ExamTaker {
 
     public static void main( String []args) throws FileNotFoundException {
@@ -38,7 +41,7 @@ public class ExamTaker {
         System.out.println("Thanks for that! Now we can start the test :)");
         //----------------------------------------------------------------------------------------------
 
-        File examFile = new File(String.format("./src/%s.txt", eName));
+        File examFile = new File(String.format("%s.txt", eName));
         //START collecting the student answers
 
 
@@ -261,7 +264,7 @@ public class ExamTaker {
             int qNum = user_input.nextInt();
             exam1.getAnswerFromStudent(qNum);
 
-            PrintWriter fin = new PrintWriter("./src/"+ lastName+"_answer.txt");
+            PrintWriter fin = new PrintWriter(lastName+"_answer.txt");
             exam1.saveStudentAnswers(fin, name, lastName,eName);
 
             System.out.println("Ok, got it, now would you like to change any more? 'y' for yes and 'n' for no: ");
