@@ -55,8 +55,10 @@ public class QuizG extends JFrame{
 
         //OLD STUFF FROM EXAM TAKE TO READ IN FILE
             //-------------------------------------------------------------------------------------
+            System.out.println(fN);
             File examFile = new File(fN+".txt");
 
+            System.out.println(examFile);
             Scanner examScanner = null;
 
             try {
@@ -112,7 +114,8 @@ public class QuizG extends JFrame{
                         String choi = examScanner.nextLine();
                         String[] ansArr = choi.split(" ", 2);
                         //System.out.println(ansArr[1]);
-                        temp.add(ansArr[1]);
+                        System.out.println(i);
+                        temp.add(ansArr[i]);
                     }
 
                     choicess.add(temp);
@@ -131,7 +134,8 @@ public class QuizG extends JFrame{
                     for (int i = 0; i < 5; i++) {
                         String choi = examScanner.nextLine();
                         String[] ansArr = choi.split(" ", 2);
-                        temp.add(ansArr[1]);
+                        System.out.println(i);
+                        temp.add(ansArr[i]);
                     }
 
                     choicess.add(temp);

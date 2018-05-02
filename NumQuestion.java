@@ -81,7 +81,7 @@ public class NumQuestion extends Question{
 		writer.write(text + "\n");
         //System.out.println(rightAnswer.getClass().getName());
         rightAnswer.save(writer);
-        //writer.write(tolerance + "\n");
+        writer.write(tolerance + "\n\n");
 	}
 	
 	

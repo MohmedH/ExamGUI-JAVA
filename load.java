@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.File;
 import java.io.PrintWriter;
@@ -60,7 +61,7 @@ public class load extends JFrame{
 	}	
 	private class ListenForButton implements ActionListener{
 		private Exam test;
-
+		private Scanner examScanner;
 		public ListenForButton(Exam test) {
 			this.test = test;
 		}
@@ -68,23 +69,42 @@ public class load extends JFrame{
 			
 			if(e.getSource() == loadExam){
 				String fileName = text.getText();
+				String path = String.format("%s", fileName);
+				File file = new File(path);
+				try {
+					examScanner = new Scanner(file);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
+
+				test = new Exam(examScanner);
+
+				//test.print();
+				JOptionPane.showMessageDialog(null, "Exam Loaded", "Success", JOptionPane.PLAIN_MESSAGE);
+
+
+				/*
 				try{
 					System.out.println(fileName);
-					File file = new File(fileName);
-					System.out.println(fileName);
+					String path = String.format("%s", fileName);
+					File file = new File(path);
 
-					test = new Exam(new Scanner(file));
-					System.out.println(fileName);
-					test.print();
-					System.out.println(fileName);
+					System.out.println(file);
+					System.out.println(path);
+					examScanner = new Scanner(file);
+					System.out.println("asdfasdfasdfasdfasdf");
+					test = new Exam(examScanner);
+
+					//test.print();
 					JOptionPane.showMessageDialog(null, "Exam Loaded", "Success", JOptionPane.PLAIN_MESSAGE);
-					System.out.println(fileName);
+
 				}
 				catch(Exception a){
 					JOptionPane.showMessageDialog(null, "Failed To Load. Enter a valid filename", "Error", JOptionPane.WARNING_MESSAGE);
 					dispose();
 					new load(test);
 				}
+				*/
 
 				new menu(test);
 				dispose();

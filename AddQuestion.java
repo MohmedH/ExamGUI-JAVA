@@ -178,8 +178,8 @@ public class AddQuestion extends JFrame{
 					double Val = Double.parseDouble(maxCredit.getText());
 					MCSAQuestion MCSAQ = new MCSAQuestion(Text,Val);
 					//addAnswers(MCSAQ , answer);
-					String[] max = credit.getText().split(", ");
-					String[] tokens = AnswerText.getText().split(", ");
+					String[] max = credit.getText().split(",");
+					String[] tokens = AnswerText.getText().split(",");
 					 
 					for(int a=0;a<numberofAnswers;a++){
 						//System.out.println("Answer #"+(a+1)+": \n Enter the text of the answer: " );

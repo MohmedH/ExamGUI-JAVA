@@ -31,7 +31,7 @@ public class NumAnswer extends Answer{
 	}
 	
 	public void save(PrintWriter writer){ //done
-		writer.write(answer + "\n\n");
+		writer.write(answer + "\n");
 	}
 	
 	
