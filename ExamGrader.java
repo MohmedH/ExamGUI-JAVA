@@ -53,6 +53,7 @@ public class ExamGrader {
         System.out.println("===================================================");
 */
         frame=new JFrame();
+
         frame.addWindowListener(new MyWindowListener());
 
         frame.addWindowListener(new WindowAdapter() {
@@ -65,6 +66,7 @@ public class ExamGrader {
 
 
         while(true){
+
             JOptionPane.showMessageDialog(frame,"This will grade your exam. Please press OK.");
 
             String answerName = JOptionPane.showInputDialog(frame, "Please type answer file name. If you saved answer file in certain paths, inlcude path.\n Example: lim_answer.txt", "lim_answer.txt");
