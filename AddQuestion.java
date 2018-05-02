@@ -24,7 +24,7 @@ public class AddQuestion extends JFrame{
 	//ArrayList<string> multiAnswers = new ArrayList<string>();
 	//ArrayList<Integer> multiCredit = new ArrayList<Integer>(); 
 	
-	public AddQuestion(){
+	public AddQuestion(Exam test){
 		
 		this.setSize(800,550);
 		
@@ -52,7 +52,7 @@ public class AddQuestion extends JFrame{
 		bG.add(SAQuestion);
 		
 		
-		ListenForButton listen = new ListenForButton();
+		ListenForButton listen = new ListenForButton(test);
 		
 		Add.addActionListener(listen);
 		JLabel questionLabel = new JLabel("Select the type of the question:");
@@ -137,6 +137,11 @@ public class AddQuestion extends JFrame{
 		
 	}
 	private class ListenForButton implements ActionListener{
+		private Exam test;
+
+		public ListenForButton(Exam test) {
+			this.test = test;
+		}
 		
 		public void actionPerformed(ActionEvent e){
 			
@@ -219,7 +224,7 @@ public class AddQuestion extends JFrame{
 				}
 				
 				dispose();
-				new menu();
+				new menu(test);
 			}
 				
 		}

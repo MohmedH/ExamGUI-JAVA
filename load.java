@@ -10,7 +10,7 @@ public class load extends JFrame{
 	protected JButton loadExam;
 	protected JTextField text;
 	
-	public load(){
+	public load(Exam test){
 		
 		this.setSize(400,200);
 		
@@ -70,17 +70,18 @@ public class load extends JFrame{
 					
 					File file = new File(fileName);
 					test = new Exam(new Scanner(file));
+					test.print();
 					JOptionPane.showMessageDialog(null, "Exam Loaded", "Success", JOptionPane.PLAIN_MESSAGE);
 				}
 				catch(Exception a){
 					JOptionPane.showMessageDialog(null, "Failed To Load. Enter a valid filename", "Error", JOptionPane.WARNING_MESSAGE);
 					dispose();
-					new load();
+					new load(test);
 				}
 
-				
+				new menu(test);
 				dispose();
-				new menu();
+
 			}
 				
 		}

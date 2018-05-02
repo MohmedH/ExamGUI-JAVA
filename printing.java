@@ -12,7 +12,7 @@ public class printing extends JFrame {
 	protected JTextField text;
 	
 	
-	public printing(){	
+	public printing(Exam test){
 		this.setSize(400,400);
 		
 		this.setLocationRelativeTo(null);
@@ -30,7 +30,7 @@ public class printing extends JFrame {
 		
 		Done = new JButton("Return To menu");
 		
-		ListenForButton listen = new ListenForButton();
+		ListenForButton listen = new ListenForButton(test);
 		
 		Done.addActionListener(listen);
 		
@@ -44,7 +44,7 @@ public class printing extends JFrame {
 	    scrollbar1.setBounds(50, 10, 300, 300);
 	    Done.setBounds(125, 325, 150, 30);
 	    
-	    //textArea1.append(test.print());
+	    textArea1.append(test.getExamString());
 	    start.add(scrollbar1);
 
 		start.add(Done);
@@ -54,16 +54,26 @@ public class printing extends JFrame {
 		
 		this.setVisible(true);
 	}
+
+	public void printExam(Exam exam) {
+		String hello = exam.getExamString();
+		System.out.println(hello);
+	}
 	
 	
 	private class ListenForButton implements ActionListener{
-		
+		private Exam test;
+
+		public ListenForButton(Exam test) {
+			this.test = test;
+		}
+
 		public void actionPerformed(ActionEvent e){
-			
+
 			if(e.getSource() == Done){
-				
+
 				dispose();
-				new menu();
+				new menu(this.test);
 			}
 			
 				

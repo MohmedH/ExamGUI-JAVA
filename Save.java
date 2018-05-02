@@ -76,7 +76,7 @@ public class Save extends JFrame{
 				}
 				
 				dispose();
-				new menu();
+				new menu(test);
 			}
 			
 				

@@ -11,7 +11,7 @@ public class Remove extends JFrame{
 	protected JButton RemoveQuestion;
 	protected JTextField text;
 	
-	public Remove(){
+	public Remove(Exam test){
 		
 		this.setSize(450,150);
 		
@@ -29,7 +29,7 @@ public class Remove extends JFrame{
 		
 		RemoveQuestion = new JButton("Remove A Question");
 		
-		ListenForButton listen = new ListenForButton();
+		ListenForButton listen = new ListenForButton(test);
 		
 		RemoveQuestion.addActionListener(listen);
 		
@@ -59,6 +59,11 @@ public class Remove extends JFrame{
 	}
 	
 	private class ListenForButton implements ActionListener{
+		private Exam test;
+
+		public ListenForButton(Exam test) {
+			this.test = test;
+		}
 		
 		public void actionPerformed(ActionEvent e){
 			
@@ -66,7 +71,7 @@ public class Remove extends JFrame{
 				int index = Integer.parseInt(text.getText());
 				//test.removeQuestion(index-1);
 				dispose();
-				new menu();
+				new menu(test);
 			}
 				
 		}

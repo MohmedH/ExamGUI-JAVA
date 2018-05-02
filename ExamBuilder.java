@@ -17,6 +17,7 @@ public class ExamBuilder extends JFrame{
 
 		int i = 0;
 		while(i == 0){
+
 			/*System.out.println("Select one of the following:\n"
 					+ "1) Load a saved Exam from a file.\n"
 					+ "2) Add questions interactively.\n"
@@ -27,7 +28,10 @@ public class ExamBuilder extends JFrame{
 					+ "7) Quit.\n");
 			System.out.print("Select an option: ");
 			*/
-			new menu();
+			menu myMenu = new menu(test);
+
+
+
 			int choice = Integer.parseInt(input.nextLine());
 
 			if(choice == 1){

@@ -15,8 +15,8 @@ public class menu extends JFrame{
 	protected JButton printExam;
 	protected JButton SaveButton;
 	protected JButton QuitButton;
-	
-	public menu(){
+	public Exam test;
+	public menu(Exam test){
 		
 		
 		this.setSize(400,450);
@@ -43,7 +43,7 @@ public class menu extends JFrame{
 		SaveButton = new JButton("Save Exam");
 		QuitButton = new JButton("Quit");
 		
-		ListenForButton listen = new ListenForButton();
+		ListenForButton listen = new ListenForButton(test);
 		
 		loadButton.addActionListener(listen);
 		AddQuestionButton.addActionListener(listen);
@@ -84,30 +84,37 @@ public class menu extends JFrame{
 		this.setVisible(true);
 	}
 
-	
+
 	private class ListenForButton implements ActionListener{
+		private Exam test;
+
+		public ListenForButton(Exam test) {
+			this.test = test;
+		}
 		
 		public void actionPerformed(ActionEvent e){
 			
 			if(e.getSource() == loadButton){
 				dispose();
-				new load();
+				new load(test);
 			}
 			else if( e.getSource() == AddQuestionButton){
 				dispose();
-				new AddQuestion();
+				new AddQuestion(test);
 			}
 			else if( e.getSource() == RemoveButton){
 				dispose();
-				new Remove();
+				new Remove(test);
 			}
 			else if( e.getSource() == ReorderButton){
 				dispose();
-				new Reorder();
+				new Reorder(test);
 			}
 			else if( e.getSource() == printExam){
+				test.print();
+				new printing(test);
 				dispose();
-				new printing();
+
 			}
 			else if( e.getSource() == SaveButton){
 				dispose();

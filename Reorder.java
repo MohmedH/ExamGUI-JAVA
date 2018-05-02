@@ -13,7 +13,7 @@ public class Reorder extends JFrame{
 	
 	
 	
-	public Reorder(){
+	public Reorder(Exam test){
 		
 		this.setSize(500,200);
 		
@@ -32,7 +32,7 @@ public class Reorder extends JFrame{
 		
 		ReorderQuestions = new JButton("Reorder Questions");
 		
-		ListenForButton listen = new ListenForButton();
+		ListenForButton listen = new ListenForButton(test);
 		
 		ReorderQuestions.addActionListener(listen);
 		
@@ -69,19 +69,24 @@ public class Reorder extends JFrame{
 	}
 	
 	private class ListenForButton implements ActionListener{
+		private Exam test;
+
+		public ListenForButton(Exam test) {
+			this.test = test;
+		}
 		
 		public void actionPerformed(ActionEvent e){
-			
+
 			if(e.getSource() == ReorderQuestions){
 				//test.reorderQuestions();
 				dispose();
-				new menu();
+				new menu(test);
 			}
 			else if( e.getSource() == ReorderAnswers){
 				//int reorder= Integer.parseInt(text.getText());
 				//test.reorderMCAAnswers(reorder);
 				dispose();
-				new menu();
+				new menu(test);
 			}
 			
 				
