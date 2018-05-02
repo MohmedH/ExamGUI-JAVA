@@ -13,4 +13,3 @@ null
 
 NumAnswer
 0.0
-
