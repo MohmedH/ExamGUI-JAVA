@@ -78,13 +78,13 @@ public class Reorder extends JFrame{
 		public void actionPerformed(ActionEvent e){
 
 			if(e.getSource() == ReorderQuestions){
-				//test.reorderQuestions();
+				test.reorderQuestions();
 				dispose();
 				new menu(test);
 			}
 			else if( e.getSource() == ReorderAnswers){
-				//int reorder= Integer.parseInt(text.getText());
-				//test.reorderMCAAnswers(reorder);
+				int reorder= Integer.parseInt(text.getText());
+				test.reorderMCAAnswers(reorder);
 				dispose();
 				new menu(test);
 			}

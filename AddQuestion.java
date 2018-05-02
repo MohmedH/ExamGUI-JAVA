@@ -42,7 +42,7 @@ public class AddQuestion extends JFrame{
 		Add = new JButton("Add");
 		NumQuestion = new JRadioButton("NumQuestion");
 		MCSAQuestion = new JRadioButton("MCSAQuestion");
-		MCMAQuestion = new JRadioButton("MCQuestion");
+		MCMAQuestion = new JRadioButton("MCMAQuestion");
 		SAQuestion = new JRadioButton("SAQuestion");
 		bG = new ButtonGroup();
 		
@@ -57,8 +57,8 @@ public class AddQuestion extends JFrame{
 		Add.addActionListener(listen);
 		JLabel questionLabel = new JLabel("Select the type of the question:");
 		JLabel questionName = new JLabel("Enter the Question:");
-		JLabel AnswerLabel = new JLabel("Enter Answer(s) seperated by commas");
-		JLabel creditLabel = new JLabel("Enter the credit for each Answer seperated by commas");
+		JLabel AnswerLabel = new JLabel("Enter Answer(s) seperated by commas ex) a,b,c,d (no space between numbers)");
+		JLabel creditLabel = new JLabel("Enter the credit for each Answer seperated by commas ex) 1,2,3,4 (no space between numbers)");
 		JLabel numAnswersLabel = new JLabel("How many Answers are there? (only for MCSA/MCMA Question)");
 		JLabel toleranceLabel = new JLabel("Enter the tolerance: (only for NumQuestion)");
 		JLabel baseCreditLabel = new JLabel("Enter base credit: (only for MCMAQuestion)");
@@ -114,6 +114,8 @@ public class AddQuestion extends JFrame{
 		start.add(MCSAQuestion);
 		start.add(MCMAQuestion);
 		start.add(SAQuestion);
+		start.add(baseCreditLabel);
+		start.add(baseCreditField);
 		start.add(questionName);
 		start.add(AnswerLabel);
 		start.add(creditLabel);
@@ -148,7 +150,7 @@ public class AddQuestion extends JFrame{
 			if(e.getSource() == Add){
 				String Text = QuestionText.getText();
 				if( NumQuestion.isSelected()){
-					/*//string Text = AnswerText.getText();
+					//Text = AnswerText.getText();
 					double Val = Double.parseDouble(maxCredit.getText());
 					double realAnswer = Double.parseDouble(AnswerText.getText());
 					double tol = Double.parseDouble(tolerance.getText());
@@ -156,28 +158,27 @@ public class AddQuestion extends JFrame{
 					NumQuestion NUMQ = new NumQuestion(Text, Val, tol);
 					NUMQ.setRightAnswer(NUMA);
 					test.addQuestion(NUMQ);
-					*/
+
 					JOptionPane.showMessageDialog(null, "NumQuestion Added", "Success", JOptionPane.PLAIN_MESSAGE);
 				}
 				else if( SAQuestion.isSelected()){
-					/*//System.out.println("What is the right answer: ");
+					System.out.println("What is the right answer: ");
 					double Val = Double.parseDouble(maxCredit.getText());
 					String rightAnswer = AnswerText.getText();
 					SAAnswer SAA = new SAAnswer(rightAnswer);
 					SAQuestion SAQ = new SAQuestion(Text,Val);
 					SAQ.setRightAnswer(SAA);
 					test.addQuestion(SAQ);
-					*
-					*/
+
 					JOptionPane.showMessageDialog(null, "SAQuestion Added", "Success", JOptionPane.PLAIN_MESSAGE);
 				}
 				else if( MCSAQuestion.isSelected()){
 					//System.out.println("Number of Answers for this question: ");
-					/*int numberofAnswers = Integer.parseInt(numAnswers.getText());
+					int numberofAnswers = Integer.parseInt(numAnswers.getText());
 					double Val = Double.parseDouble(maxCredit.getText());
 					MCSAQuestion MCSAQ = new MCSAQuestion(Text,Val);
 					//addAnswers(MCSAQ , answer);
-					double[] max = Double.parseDouble(credit.getText().split(", "));
+					String[] max = credit.getText().split(", ");
 					String[] tokens = AnswerText.getText().split(", ");
 					 
 					for(int a=0;a<numberofAnswers;a++){
@@ -185,23 +186,23 @@ public class AddQuestion extends JFrame{
 						//String answerText=input.nextLine();
 						//System.out.println("Enter the credit if selected: ");
 						//double creditIfSelected=Double.parseDouble(input.nextLine());
-						MCSAQ.addAnswer((MCAnswer)((MCSAQuestion)MCSAQ).getNewAnswer(tokens[a], max[a]));
+						MCSAQ.addAnswer((MCAnswer)((MCSAQuestion)MCSAQ).getNewAnswer(tokens[a], Double.parseDouble(max[a])));
 
 					}
 					test.addQuestion(MCSAQ);
-					*/
+
 					
 					JOptionPane.showMessageDialog(null, "MCSAQuestion Added", "Success", JOptionPane.PLAIN_MESSAGE);
 				}else if (MCMAQuestion.isSelected()){
-					/*//System.out.println("Enter the base credit:" );
+					//System.out.println("Enter the base credit:" );
 					double baseCredit = Double.parseDouble(baseCreditField.getText());
 					//System.out.println("Number of Answers for this question: ");
 					double Val = Double.parseDouble(maxCredit.getText());
 					int NumofAnswers = Integer.parseInt(numAnswers.getText());
 					MCMAQuestion MCMAQ = new MCMAQuestion(Text,Val, baseCredit);
 					
-					double[] max = Double.parseDouble(credit.getText().split(", "));
-					String[] tokens = AnswerText.getText().split(", ");
+					String[] max = credit.getText().split(",");
+					String[] tokens = AnswerText.getText().split(",");
 					
 					//addAnswers(MCMAQ , NumofAnswers);
 					for(int a=0;a<NumofAnswers;a++){
@@ -211,12 +212,12 @@ public class AddQuestion extends JFrame{
 						//System.out.println("Enter the credit if selected: ");
 						//double creditIfSelected=Double.parseDouble(input.nextLine());
 						//((MCMAQuestion)MCMAQ).getNewAnswer(answerText, creditIfSelected);
-						MCMAQ.addAnswer((MCAnswer)((MCMAQuestion)MCMAQ).getNewAnswer(tokens[a],max[a]));
+						MCMAQ.addAnswer((MCAnswer)((MCMAQuestion)MCMAQ).getNewAnswer(tokens[a], Double.parseDouble(max[a])));
 
 					}
 					test.addQuestion(MCMAQ);
 					
-					*/
+
 					
 					JOptionPane.showMessageDialog(null, "MCMAQuestion Added", "Success", JOptionPane.PLAIN_MESSAGE);
 					

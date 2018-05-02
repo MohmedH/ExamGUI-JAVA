@@ -22,6 +22,13 @@ public class MCAnswer extends Answer {
         System.out.println(text);
     }
 
+    public String getExamString() {
+        String s = "";
+        s += text + "\n";
+        return s;
+
+    }
+
     public void save(PrintWriter writer) {
         writer.write(Double.toString(creditIfSelected) + " " + text + "\n");
     }

@@ -37,6 +37,10 @@ public abstract class Question {
     public void restoreStudentAnswers(String s, Scanner scanner) {}
 
     abstract public void save(PrintWriter writer);
+    public String getExamString() {
+        String s = text + "\n";
+        return s;
+    }
 
 
     public void print() {

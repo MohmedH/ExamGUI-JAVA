@@ -118,7 +118,7 @@ public class menu extends JFrame{
 			}
 			else if( e.getSource() == SaveButton){
 				dispose();
-				new Save();
+				new Save(test);
 			}
 			else if( e.getSource() == QuitButton){
 				System.exit(0);

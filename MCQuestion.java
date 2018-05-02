@@ -28,6 +28,19 @@ public class MCQuestion extends Question{
         return 0.0;
     }
 
+    public String getExamString() {
+        String s ="\n";
+        char[] answerAlphabet = {'A', 'B', 'C', 'D', 'E'};
+        // get the answer and print out.
+        s += this.getTheQuestion();
+        int numOfAnswers = answers.size();
+        for (int i=0; i < numOfAnswers; i++) {
+            s += " " + answerAlphabet[i] + ".";
+            s += answers.get(i).getExamString() + "\n";
+        }
+        return s;
+    }
+
     public void print() {
         char[] answerAlphabet = {'A', 'B', 'C', 'D', 'E'};
         // get the answer and print out.

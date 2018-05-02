@@ -160,7 +160,7 @@ public class Exam {
         for (Question q : questions) {
             exam += "\n";
             exam += "Q." + (j+1) + ": ";
-            exam += q.text;
+            exam += q.getExamString();
             // Iterates the answers and print out.
             j++;
         }

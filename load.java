@@ -27,7 +27,7 @@ public class load extends JFrame{
 		
 		loadExam = new JButton("Load Exam");
 		
-		ListenForButton listen = new ListenForButton();
+		ListenForButton listen = new ListenForButton(test);
 		
 		loadExam.addActionListener(listen);
 		
@@ -59,19 +59,26 @@ public class load extends JFrame{
 		
 	}	
 	private class ListenForButton implements ActionListener{
-		
+		private Exam test;
+
+		public ListenForButton(Exam test) {
+			this.test = test;
+		}
 		public void actionPerformed(ActionEvent e){
 			
 			if(e.getSource() == loadExam){
-				Exam test = null;
 				String fileName = text.getText();
 				try{
-					
-					
+					System.out.println(fileName);
 					File file = new File(fileName);
+					System.out.println(fileName);
+
 					test = new Exam(new Scanner(file));
+					System.out.println(fileName);
 					test.print();
+					System.out.println(fileName);
 					JOptionPane.showMessageDialog(null, "Exam Loaded", "Success", JOptionPane.PLAIN_MESSAGE);
+					System.out.println(fileName);
 				}
 				catch(Exception a){
 					JOptionPane.showMessageDialog(null, "Failed To Load. Enter a valid filename", "Error", JOptionPane.WARNING_MESSAGE);

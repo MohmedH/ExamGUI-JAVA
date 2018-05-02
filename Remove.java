@@ -69,7 +69,7 @@ public class Remove extends JFrame{
 			
 			if(e.getSource() == RemoveQuestion){
 				int index = Integer.parseInt(text.getText());
-				//test.removeQuestion(index-1);
+				test.removeQuestion(index-1);
 				dispose();
 				new menu(test);
 			}

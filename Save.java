@@ -10,7 +10,7 @@ public class Save extends JFrame{
 	protected JButton Done;
 	protected JTextField text;
 	
-	public Save(){
+	public Save(Exam test){
 		this.setSize(400,200);
 		
 		this.setLocationRelativeTo(null);
@@ -29,7 +29,7 @@ public class Save extends JFrame{
 		
 		Done = new JButton("Save Exam");
 		
-		ListenForButton listen = new ListenForButton();
+		ListenForButton listen = new ListenForButton(test);
 		
 		Done.addActionListener(listen);
 		
@@ -56,11 +56,16 @@ public class Save extends JFrame{
 		
 	}
 	private class ListenForButton implements ActionListener{
+		private Exam test;
+
+		public ListenForButton(Exam test) {
+			this.test = test;
+		}
 		
 		public void actionPerformed(ActionEvent e){
+
 			
 			if(e.getSource() == Done){
-				Exam test = null;
 				String fileName;
 				try{
 					fileName = text.getText();
@@ -72,7 +77,7 @@ public class Save extends JFrame{
 				catch(Exception a){
 					JOptionPane.showMessageDialog(null, "Failed To Save. Enter a valid filename", "Error", JOptionPane.WARNING_MESSAGE);
 					dispose();
-					new Save();
+					new Save(test);
 				}
 				
 				dispose();
