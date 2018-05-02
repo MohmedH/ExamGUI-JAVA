@@ -38,7 +38,9 @@ public abstract class Question {
 
     abstract public void save(PrintWriter writer);
 
+
     public void print() {
+
         System.out.println(text);
 
     }

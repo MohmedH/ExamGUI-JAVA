@@ -101,7 +101,7 @@ public class Exam {
                         scanner.nextLine();
                 }
                 else {
-                    //System.out.println("- Student Answered:  " + ans);
+                    System.out.println("- Student Answered:  " + ans);
                     q.restoreStudentAnswers(ans, scanner);
                     if (scanner.hasNext())
                         scanner.nextLine();
@@ -146,6 +146,27 @@ public class Exam {
         }
         System.out.println("\n\nEnd of Exam. Congratulation!!");
         System.out.println("-------------------------------------------------------------");
+    }
+
+
+    public String getExamString() {
+        String exam = "";
+        exam += "\n\nExam Name: " + text;
+
+        exam += "\n-------------------------------------------------------------";
+
+        int j = 0;
+        // Iterate the Questions ArrayList and then print out each question and answers.
+        for (Question q : questions) {
+            exam += "\n";
+            exam += "Q." + (j+1) + ": ";
+            exam += q.text;
+            // Iterates the answers and print out.
+            j++;
+        }
+        exam += "\n\nEnd of Exam. Congratulation!!\n";
+        exam += "-------------------------------------------------------------\n\n\n";
+        return exam;
     }
 
 

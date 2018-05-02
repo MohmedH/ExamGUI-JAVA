@@ -32,7 +32,7 @@ public class MCMAQuestion extends MCQuestion{
     }
 
     public void restoreStudentAnswers(String s, Scanner scanner) {
-
+        System.out.println("sout!!!: " + s);
         int numOfAnswers = Integer.parseInt(s);
 
         double score = 0.0;
