@@ -1,0 +1,29 @@
+Homework4 = BY: Anas Tlemat, Seho Lim, Mohmed Hira 
+TEAM: 31!
+Classes that were contributed by group members: 
+Anas contributed: Answer, SAQuestion, SAAnswer, NumQuestion, and NumAnswer.
+Seho contributed: MCAnswer, MCSAQuestion, MCSAAnswer, MCMAQuestion, MCMAAnswer, ScannerFactory  
+Mohmed contributed: Exam, Question, and MCQuestion. 
+New classes made for this release: ExamMaker, ExamTaker, ExamGrader.
+ExamMaker made by: Anas
+ExamTaker made by: Mohmed
+ExamGrader made by: Seho
+
+NOTES FOR EACH CLASSES:
+
+IN ExamTaker:
+-You might have to change directory from where you are looking for the exam file.
+
+- Student is prompted to enter in the exam file they would like to open, so if the exam file is saved in directory as exam1.txt, All you need to input is exam1. Then the exam file should open properly. 
+
+-PLEASE READ PROMPTS CAREFULLY, "s" is to skip, there are a couple of yes and no prompts that are represented by "y" and "n" respectfully. 
+
+-If you skip in initial exam it will ask you if you want to input an answer, if you do you can go ahead and input an answer, if you would like to skip again, you may do so. If you would like to leave it blank this is also acceptable 
+
+-Then it will prompt you and ask if you would like any answers changed, NOTE: if you select yes, you must remember what question number you want to change. It was an optional enhancement to display the answers and questions again for the student and I did not do it, so they must remember which number they would like to change.
+
+-After you make your changes, it will ask one more time to double check if its all good, and then if it is you follow the prompt.
+
+-After this it will give you a goodbye message and the final answers text file will be saved in the format lastname_answers.txt note: lastname will be the last name you input.  
+
+

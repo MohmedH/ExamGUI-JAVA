@@ -1,14 +1,17 @@
-seho lim
+Seho Lim
 stored_exam
+2018-04-12T22:26:28.747Z
 
 MCMAAnswer
-0
+1
+Tom Riddle
 
 SAAnswer
-null
+A
 
 MCSAAnswer
-null
+Onions
 
 NumAnswer
-null
+40.0
+

@@ -1,17 +1,23 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.PrintWriter;
+import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.*;
 
-public class ExamBuilder{
+public class ExamBuilder extends JFrame{
+	
+	
 	public static void main(String[] args){
-		Exam test=null;
+		Exam test = null;
 		Scanner input=new Scanner(System.in);
 
-
+		//new menu();
 
 		int i = 0;
 		while(i == 0){
-			System.out.println("Select one of the following:\n"
+			/*System.out.println("Select one of the following:\n"
 					+ "1) Load a saved Exam from a file.\n"
 					+ "2) Add questions interactively.\n"
 					+ "3) Remove questions interactively.\n"
@@ -20,6 +26,8 @@ public class ExamBuilder{
 					+ "6) Save the exam.\n"
 					+ "7) Quit.\n");
 			System.out.print("Select an option: ");
+			*/
+			new menu();
 			int choice = Integer.parseInt(input.nextLine());
 
 			if(choice == 1){
@@ -30,27 +38,11 @@ public class ExamBuilder{
 				System.out.println("");
 
 
-				/*
-
-				System.out.println("Save as: ");
-				System.out.println("ex) stored_exam.txt");
-				System.out.print("-> ");
-				System.out.println("");
 				String fileName;
-				try{
-					fileName = input.nextLine().trim();
-					File File=new File(fileName);
-					PrintWriter pw=new PrintWriter(File);
-					test.save(pw);
-				}
-
-*/				String fileName;
 				fileName = input.nextLine().trim();
 				try{
 
-					// File File=new File(fileName);
-					// PrintWriter pw=new PrintWriter(File);
-					// test.save(pw);
+					
 
 					File file = new File(fileName);
 					test = new Exam(new Scanner(file));

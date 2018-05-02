@@ -1,16 +1,16 @@
-A B
+Anas Tlemat
 stored_exam
-2018-04-12T22:26:28.747Z
+2018-04-13T04:28:09.945Z
 
 MCMAAnswer
-1
-Tom Riddle
+0
 
 SAAnswer
-A
+null
 
 MCSAAnswer
-Onions
+null
 
 NumAnswer
-40.0
+0.0
+
