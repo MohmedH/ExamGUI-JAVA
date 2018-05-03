@@ -68,7 +68,7 @@ public class ExamGrader {
             JOptionPane.showMessageDialog(frame,"This will grade your exam. Please press OK.");
 
 
-            String answerName = JOptionPane.showInputDialog(frame, "Please type answer file name. If you saved answer file in certain paths, inlcude path.\n Example: lim_answer.txt", "lim_answer.txt");
+            String answerName = JOptionPane.showInputDialog(frame, "Please type answer file name. If you saved answer file in certain paths, inlcude path.\n Example: lim_answer.txt", "hello_AnswerFile.txt");
             if(answerName == null){
                 JOptionPane.showMessageDialog(frame,"You didn't put any exam name. Exiting the program . . . ");
                 System.exit(0);
