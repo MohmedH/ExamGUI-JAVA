@@ -19,6 +19,7 @@ public class RadioQuestion extends JPanel implements ActionListener{
     JTextField respon;
     int chek = 0;
     int sAT = 0;
+    int MCNum = 0;
     //bottom
     JPanel botPanel=new JPanel();
     JButton next=new JButton("Next Q");
@@ -104,6 +105,7 @@ public class RadioQuestion extends JPanel implements ActionListener{
                 for (int k = 0; k < quiz.mcMAA.size(); k++) {
                     quiz.mcMAA.remove(k);
                 }
+                quiz.numAns.remove((quiz.numAns.size() - 1));
             }
         }
         //submit button
@@ -156,8 +158,11 @@ public class RadioQuestion extends JPanel implements ActionListener{
             for(int k = 0; k < quiz.mcMAA.size(); k++){
                 f = quiz.mcMAA.get(k);
                 tt.add(responses[f].getText());
+                MCNum++;
             }
-           quiz.mcMAA.clear();
+            quiz.numAns.add(MCNum);
+            quiz.mcMAA.clear();
+            MCNum = 0;
 
         }else{
             tt.add(text);

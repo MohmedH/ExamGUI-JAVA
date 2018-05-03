@@ -2,14 +2,12 @@ import javax.swing.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 //THIS CLASS IS STRICTLY THE FIRST PAGE OF GUI ONLY TO GET INPUT OF NAME AND FILE YOU WANT TO OPEN
 public class openingP extends JPanel implements ActionListener {
 
     QuizG quiz;
-    ExamPDriver dd;
+    ExamTakerNew dd;
     JPanel openPanel = new JPanel();
     JPanel textIn = new JPanel();
     JPanel bott = new JPanel();

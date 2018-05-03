@@ -67,7 +67,12 @@ public class ExamGrader {
         while(true){
             JOptionPane.showMessageDialog(frame,"This will grade your exam. Please press OK.");
 
+
             String answerName = JOptionPane.showInputDialog(frame, "Please type answer file name. If you saved answer file in certain paths, inlcude path.\n Example: lim_answer.txt", "lim_answer.txt");
+            if(answerName == null){
+                JOptionPane.showMessageDialog(frame,"You didn't put any exam name. Exiting the program . . . ");
+                System.exit(0);
+            }
 
             //System.out.println("Please type answer file name. If you saved answer file in certain paths, inlcude path.");
             //System.out.print("-> (ex: Lim_answer.txt): ");
@@ -99,7 +104,13 @@ public class ExamGrader {
             int a = JOptionPane.showConfirmDialog(frame,"Is this exam right? ->" + examName + "\n Click Cancel if this is wrong. Click OK if it is correct.");
             if(a == JOptionPane.NO_OPTION){
                 JOptionPane.showMessageDialog(frame,"You said no. Exiting the program ...");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                System.exit(0);
+            }
+            else if(a == JOptionPane.CANCEL_OPTION) {
+                JOptionPane.showMessageDialog(frame,"You clicked cancel. Exiting the program ...");
+
+                System.exit(0);
             }
 
             //System.out.println("Is this exam right? ->" + examName);
@@ -138,10 +149,12 @@ public class ExamGrader {
 
             Exam exam1 = new Exam(examScanner);
 
-
+/*
             String examString = exam1.getExamString();
             JOptionPane.showMessageDialog(frame, "Here is the exam you answered to. :) ");
             JOptionPane.showMessageDialog(frame, examString);
+
+            */
 
             exam1.restoreStudentAnswers(answerScanner);
             int numQuestions = exam1.getNumberOfQuestions();
