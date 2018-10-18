@@ -1,17 +1,29 @@
-Homework4 = BY: Anas Tlemat, Seho Lim, Mohmed Hira 
-TEAM: 31!
-Classes that were contributed by group members: 
-Anas contributed: Answer, SAQuestion, SAAnswer, NumQuestion, and NumAnswer.
-Seho contributed: MCAnswer, MCSAQuestion, MCSAAnswer, MCMAQuestion, MCMAAnswer, ScannerFactory  
-Mohmed contributed: Exam, Question, and MCQuestion. 
-New classes made for this release: ExamMaker, ExamTaker, ExamGrader.
+Targeted users would be Highschool teacher / Highschool Students:
+
+There are 3 GUI applications that were developed in Java. ExamMaker, ExamTaker, ExamGrader.
+
+First GUI program will take you through options to making the exam, what kinds of questions you would want to add on the test
+i.e. Questions that have a number answer, multiple choice questions (MY FAVOIRTE xD), multiple choice questions that have multiple
+answer choices, Fill in the blank questions, etc. This will allow the professor to make the exam and the program will then output
+the .txt file in the proper format for the ExamTaker to read.
+
+ExamTaker will be opened and used by students. Key feature of this is every time the same exam file is opened the questions are shown
+in a random order, this will ideally prevent cheating. ExamTaker, is pretty stright forward, it will ask the questions depending
+on the question and take in the proper response. Upon completion, answers are saved in a specific format as well in a .txt
+file which is readable by the ExamGrader.
+
+ExamGrader takes in the answer key file, and will take in the student answer file. It will run them against each other and will 
+output a final score.
+
+This was created BY: Anas Tlemat, Seho Lim, Mohmed Hira 
+
 ExamMaker made by: Anas
 ExamTaker made by: Mohmed
 ExamGrader made by: Seho
 
 NOTES FOR EACH CLASSES:
 
-IN ExamTaker:
+Mohmed Hira- IN ExamTaker:
 -You might have to change directory from where you are looking for the exam file.
 
 - Student is prompted to enter in the exam file they would like to open, so if the exam file is saved in directory as exam1.txt, All you need to input is exam1. Then the exam file should open properly. 
