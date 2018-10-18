@@ -2,18 +2,11 @@ Targeted users would be Highschool teacher / Highschool Students:
 
 There are 3 GUI applications that were developed in Java. ExamMaker, ExamTaker, ExamGrader.
 
-First GUI program will take you through options to making the exam, what kinds of questions you would want to add on the test
-i.e. Questions that have a number answer, multiple choice questions (MY FAVOIRTE xD), multiple choice questions that have multiple
-answer choices, Fill in the blank questions, etc. This will allow the professor to make the exam and the program will then output
-the .txt file in the proper format for the ExamTaker to read.
+First GUI program will take you through options to making the exam, what kinds of questions you would want to add on the test i.e. Questions that have a number answer, multiple choice questions (MY FAVOIRTE xD), multiple choice questions that have multiple answer choices, Fill in the blank questions, etc. This will allow the professor to make the exam and the program will then output the .txt file in the proper format for the ExamTaker to read.
 
-ExamTaker will be opened and used by students. Key feature of this is every time the same exam file is opened the questions are shown
-in a random order, this will ideally prevent cheating. ExamTaker, is pretty stright forward, it will ask the questions depending
-on the question and take in the proper response. Upon completion, answers are saved in a specific format as well in a .txt
-file which is readable by the ExamGrader.
+ExamTaker will be opened and used by students. Key feature of this is every time the same exam file is opened the questions are shown in a random order, this will ideally prevent cheating. ExamTaker, is pretty stright forward, it will ask the questions depending on the question and take in the proper response. Upon completion, answers are saved in a specific format as well in a .txt file which is readable by the ExamGrader.
 
-ExamGrader takes in the answer key file, and will take in the student answer file. It will run them against each other and will 
-output a final score.
+ExamGrader takes in the answer key file, and will take in the student answer file. It will run them against each other and will output a final score.
 
 This was created BY: Anas Tlemat, Seho Lim, Mohmed Hira 
 
